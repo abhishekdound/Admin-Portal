@@ -30,7 +30,11 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/admin-lte/dist/css/adminlte.min.css"
+            ],
+            "scripts": [
+              "/node_modules/admin-lte/dist/js/adminlte.min.js"
             ]
           },
           "configurations": {
