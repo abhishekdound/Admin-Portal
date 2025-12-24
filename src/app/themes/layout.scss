@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+body.fixed-header {
+  
+    .app-header{
+      position: fixed;
+    top: 0px;
+    left:250px;
+    width: calc(100vw - 250px);
+    
+    z-index: 999;}
+  
+}body.fixed-footer {
+  
+    .app-footer{
+        position: fixed;
+        bottom: 0px;
+        left: 250px;
+      width: calc(100vw - 250px);
+      z-index: 999;
+  }
+  
+}
+
+body.fixed-footer {
+  
+    .app-sidebar{
+        position: fixed;
+        left:0;
+      top: 0;
+      height: 100vh;
+  }
+  
+}
+
+[data-overlayscrollbars~="host"] {
+  width: 100% !important;
+}
