@@ -31,7 +31,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "./node_modules/admin-lte/dist/css/adminlte.min.css"
+              "./node_modules/admin-lte/dist/css/adminlte.min.css",
+              "./node_modules/bootstrap-icons/font/bootstrap-icons.min.css"
             ],
             "scripts": [
               "/node_modules/admin-lte/dist/js/adminlte.min.js"
