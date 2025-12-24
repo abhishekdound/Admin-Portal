@@ -1,0 +1,7 @@
+.app-sidebar {
+  height: 100vh;
+}
+
+.sidebar-wrapper {
+  height: calc(100vh - 56px); /* adjust if brand/header height differs */
+}
