@@ -1,7 +1,9 @@
-.app-content {
-  margin-left: 250px;
-  width: calc(100% - 250px);
+.app-content,
+.app-content > .container {
+  max-width: 100% !important;
+  width: 100% !important;
 }
+
 
 // .app-main{
 //   width: 100%;

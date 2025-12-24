@@ -67,17 +67,35 @@ body.sidebar-collapse .app-footer {
 
 
 .app-main {
-  margin-top: 0px; /* header height */
-  transition: all 0.3s ease;
+  padding: 0px;
+  margin-top: 0px;
+  min-height: calc(100vh - 56px - 40px);
+  transition: margin-left 0.3s ease;
 }
 
-/* sidebar open */
 body:not(.sidebar-collapse) .app-main {
-  margin-left: 10px;
+  margin-left: 250px;
+  width: 91%;
 }
 
-/* sidebar collapsed */
 body.sidebar-collapse .app-main {
-  margin-left: 0px;
+  margin-left: 80px;
+  width: 97%;
 }
+
+
+
+
+/* NORMAL */
+.app-sidebar {
+  width: 250px;
+  transition: width 0.3s ease;
+}
+
+/* COLLAPSED */
+body.sidebar-collapse .app-sidebar {
+  width: 50px;   /* or 80px (AdminLTE default mini) */
+}
+
+
 
