@@ -1,25 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
-body.fixed-header {
-  
-    .app-header{
-      position: fixed;
-    top: 0px;
-    left:250px;
-    width: calc(100vw - 250px);
-    
-    z-index: 999;}
-  
-}body.fixed-footer {
-  
-    .app-footer{
-        position: fixed;
-        bottom: 0px;
-        left: 250px;
-      width: calc(100vw - 250px);
-      z-index: 999;
-  }
-  
+:root {
+  --sidebar-open-width: 250px;
+  --sidebar-collapsed-width: 65px; /* or 80px for sidebar-mini */
 }
+
+
+.app-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 56px;
+  transition: all 0.3s ease;
+}
+
+/* sidebar open */
+body:not(.sidebar-collapse) .app-header {
+  left: var(--sidebar-open-width);
+  width: calc(100% - var(--sidebar-open-width));
+}
+
+/* sidebar collapsed */
+body.sidebar-collapse .app-header {
+  left: var(--sidebar-collapsed-width);
+  width: calc(100% - var(--sidebar-collapsed-width));
+}
+
+
+// body.fixed-foote
 
 body.fixed-footer {
   
@@ -32,6 +39,45 @@ body.fixed-footer {
   
 }
 
+
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 40px;
+  transition: all 0.3s ease;
+}
+
+/* sidebar open */
+body:not(.sidebar-collapse) .app-footer {
+  left: var(--sidebar-open-width);
+  width: calc(100% - var(--sidebar-open-width));
+}
+
+/* sidebar collapsed */
+body.sidebar-collapse .app-footer {
+  left: var(--sidebar-collapsed-width);
+  width: calc(100% - var(--sidebar-collapsed-width));
+}
+
+
 [data-overlayscrollbars~="host"] {
   width: 100% !important;
 }
+
+
+.app-main {
+  margin-top: 0px; /* header height */
+  transition: all 0.3s ease;
+}
+
+/* sidebar open */
+body:not(.sidebar-collapse) .app-main {
+  margin-left: 10px;
+}
+
+/* sidebar collapsed */
+body.sidebar-collapse .app-main {
+  margin-left: 0px;
+}
+

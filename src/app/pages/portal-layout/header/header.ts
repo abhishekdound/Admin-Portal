@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './header.scss',
 })
 export class Header {
+  sideBarToggle(){
+    document.body.classList.toggle('sidebar-collapse');
+    document.body.classList.toggle('sidebar-open');
+  }
 
 }
