@@ -1,5 +1,5 @@
 :root{
-  --background-color:#f4f4f4;
+  --background-color:#e0c2db;
   --primary-color:#74c78d;
   --secondary-color:#22bce7;
   --tertiary-color:#b63037;
@@ -8,4 +8,13 @@
   --danger-color:#7b3636;
   --success-color:#1ad78c;
   --warning-color:#d0581c;
+}
+.bg-color{
+  background-color: var(--background-color);
+}
+.nv-color{
+  background-color: var(--light-color);
+}
+.fter-color{
+  background-color: var(--light-color) !important;
 }
