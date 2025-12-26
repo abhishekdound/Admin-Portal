@@ -15,15 +15,27 @@ export class HeaderOptionsList {
     if(this.forNoti()){
       this.checkNoti();
     }
+    if(this.forUser()){
+      this.checkUser();
+    }
     this.forMessage.update(x=>!x);
   }
   checkNoti(){
     if(this.forMessage()){
       this.checkMessage();
     }
+    if(this.forUser()){
+      this.checkUser();
+    }
     this.forNoti.update(x=>!x);
   }
   checkUser(){
+    if(this.forNoti()){
+      this.checkNoti();
+    }
+    if(this.forMessage()){
+      this.checkMessage();
+    }
     this.forUser.update(x=>!x);
   }
 

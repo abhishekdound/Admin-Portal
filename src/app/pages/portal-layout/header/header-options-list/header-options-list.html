@@ -9,7 +9,7 @@
   <!--end::Navbar Search-->
 
   <!--begin::Messages Dropdown Menu-->
-  <li class="nav-item dropdown" [ngClass]="{'show':forMessage()}">
+  <li class="nav-item dropdown" >
     <a class="nav-link" data-bs-toggle="dropdown" (click)="checkMessage()">
       <i class="bi bi-chat-text"></i>
       <span class="navbar-badge badge text-bg-danger">3</span>
@@ -91,7 +91,7 @@
   <!--end::Messages Dropdown Menu-->
 
   <!--begin::Notifications Dropdown Menu-->
-  <li class="nav-item dropdown" [ngClass]="{'show':forNoti()}">
+  <li class="nav-item dropdown" >
     <a class="nav-link" data-bs-toggle="dropdown" (click)="checkNoti()">
       <i class="bi bi-bell-fill"></i>
       <span class="navbar-badge badge text-bg-warning">15</span>
@@ -129,7 +129,7 @@
   <!--end::Fullscreen Toggle-->
 
   <!--begin::User Menu Dropdown-->
-  <li class="nav-item dropstart user-menu " [ngClass]="{'show':forUser()}">
+  <li class="nav-item dropstart user-menu ">
     <a (click)="checkUser()" class="nav-link dropdown-toggle" >
       <img
         src="./img/user2-160x160.jpg"
