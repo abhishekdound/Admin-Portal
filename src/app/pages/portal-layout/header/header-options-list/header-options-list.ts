@@ -39,4 +39,13 @@ export class HeaderOptionsList {
     this.forUser.update(x=>!x);
   }
 
+  toggleFullScreen(){
+    if(!document.fullscreenElement){
+      document.documentElement.requestFullscreen();
+    }
+    else{
+      document.exitFullscreen();
+    }
+  }
+
 }
