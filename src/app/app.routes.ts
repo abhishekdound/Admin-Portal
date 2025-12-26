@@ -8,5 +8,6 @@ export const routes: Routes = [
       {path:'dashboard',loadComponent:()=>import('./pages/main-content/dashboard/dashboard').then((c)=>c.Dashboard)},
       {path:'users',loadComponent:()=>import('./pages/main-content/users/users').then(c=>c.Users)}
     ]
-  }
+  },
+  {path:'yoo' , loadComponent:()=>import('./dummy/dummy').then(c=>c.Dummy)}
 ];

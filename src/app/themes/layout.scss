@@ -97,5 +97,9 @@ body.sidebar-collapse .app-sidebar {
   width: 50px;   /* or 80px (AdminLTE default mini) */
 }
 
+body:not(.sidebar-collapse) .user-main{
+  margin-right: 50px;
+}
+
 
 

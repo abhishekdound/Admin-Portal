@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterLink } from "@angular/router";
+import { DashboardHeader } from "../../portal-layout/dashboard-header/dashboard-header/dashboard-header";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterLink],
+  imports: [RouterLink, DashboardHeader],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
