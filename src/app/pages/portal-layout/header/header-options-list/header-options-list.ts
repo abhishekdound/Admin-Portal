@@ -12,9 +12,15 @@ export class HeaderOptionsList {
   forNoti:WritableSignal<boolean>=signal<boolean>(false);
   forUser:WritableSignal<boolean>=signal<boolean>(false);
   checkMessage(){
+    if(this.forNoti()){
+      this.checkNoti();
+    }
     this.forMessage.update(x=>!x);
   }
   checkNoti(){
+    if(this.forMessage()){
+      this.checkMessage();
+    }
     this.forNoti.update(x=>!x);
   }
   checkUser(){
