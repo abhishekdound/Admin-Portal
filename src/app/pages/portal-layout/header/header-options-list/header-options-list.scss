@@ -1,6 +1,28 @@
-.user-menu .dropdown-menu {
-  right: 0% !important;
-  left: auto !important;
-  top: 100% !important;
-  transform: translateY(0) !important;
+.user-menu{
+
+  .dropdown-menu {
+    right: 0% !important;
+    left: auto !important;
+    top: 100% !important;
+    transform: translateY(0) !important;
+  }
+}
+
+.message-menu{
+
+  .dropdown-menu {
+    right: -12vh !important;
+    top: 100% !important;
+    transform: translateY(0) !important;
+  }
+}
+
+.noti-menu{
+
+  .dropdown-menu {
+    right: -12vh !important;
+    left: auto !important;
+    top: 100% !important;
+    transform: translateY(0) !important;
+  }
 }
