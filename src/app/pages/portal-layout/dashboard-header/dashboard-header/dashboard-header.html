@@ -1,16 +1,16 @@
 <!--begin::App Content Header-->
-<div class="app-content-header">
+<div class="app-content-header ">
   <!--begin::Container-->
   <div class="container-fluid">
     <!--begin::Row-->
-    <div class="row">
-      <div class="col-sm-6">
+    <div class="main-row row">
+      <div class="col-sm-6 ps-5">
         <h3 class="mb-0">{{ this.currentRoute() }}</h3>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 ">
         <ol class="breadcrumb float-sm-end">
-          <li class="breadcrumb-item">
-            <a routerLink="../dashboard" routerLinkActive="active">Home</a>
+          <li class="breadcrumb-item" >
+            <a routerLink="../dashboard" routerLinkActive="active" class="home-link text-danger" ><i class="fa-regular fa-house"></i></a>
           </li>
           <li class="breadcrumb-item active" aria-current="page">{{ this.currentRoute() }}</li>
         </ol>

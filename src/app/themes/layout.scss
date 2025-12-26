@@ -82,6 +82,23 @@ body.sidebar-collapse .app-main {
   margin-left: 80px;
   width: 97%;
 }
+.user-main {
+  transition: margin-left 0.6s ease;
+  transition: width 0.4s ease;
+  width: 76vw;
+}
+
+body:not(.sidebar-collapse) .user-main {
+  margin-left: 45px; /* sidebar open */
+}
+
+body.sidebar-collapse .user-main {
+  margin-left: 40px; /* sidebar collapsed */
+  width:87vw;
+}
+
+
+
 
 
 
@@ -96,10 +113,14 @@ body.sidebar-collapse .app-main {
 body.sidebar-collapse .app-sidebar {
   width: 50px;   /* or 80px (AdminLTE default mini) */
 }
+// .user-main{
+//   .app-content-header{
+//     .main-row{
+//       width: 80vw;
+//     }
+//   }
+// }
 
-body:not(.sidebar-collapse) .user-main{
-  margin-right: 50px;
-}
 
 
 
