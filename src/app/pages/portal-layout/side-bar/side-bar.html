@@ -55,7 +55,8 @@
             <ul class="nav nav-treeview">
               @for (sub of item.sub_menu; track $index) {
               <li class="nav-item">
-                <a [routerLink]="sub.route" class="nav-link">
+                <a [routerLink]="sub.route" class="nav-link"
+                routerLinkActive="active">
                   <i [ngClass]="sub?.icon"></i>
                   <p>{{ sub.label }}</p>
                 </a>

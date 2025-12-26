@@ -14,7 +14,7 @@ export const DetailData:SideBarData[]=[{
     {
     label:'Data3',
     icon:'bi bi-grip-horizontal',
-    route:'dashboard',
+    route:'nooo',
     heading:false
 
     },
@@ -22,7 +22,7 @@ export const DetailData:SideBarData[]=[{
       
     label:'Data4',
     icon:'bi bi-grip-horizontal',
-    route:'dashboard',
+    route:'noo',
     heading:false
     }
   ],
