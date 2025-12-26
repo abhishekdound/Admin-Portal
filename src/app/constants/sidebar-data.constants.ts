@@ -2,7 +2,7 @@ import { SideBarData } from "../interface/side-bar.interface";
 
 export const DetailData:SideBarData[]=[{
   label:'Dashboard',
-  icon:'bi bi-house',
+  icon:'fa-solid fa-house',
   route:'dashboard',
   heading:false
 
@@ -31,6 +31,6 @@ export const DetailData:SideBarData[]=[{
 {
   label:'Users',
   heading:false,
-  icon:'bi bi-door-open',
+  icon:"fa-solid fa-door-closed",
   route:'users'
 }]
