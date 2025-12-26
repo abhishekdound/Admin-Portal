@@ -37,3 +37,9 @@ li.nav-item{
     padding: 8px 16px;
   }
 }
+
+.nav-item{
+  .nav-link:hover{
+    cursor:pointer;
+  }
+}
