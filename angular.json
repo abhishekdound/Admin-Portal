@@ -33,10 +33,12 @@
               "src/styles.scss",
               "./node_modules/admin-lte/dist/css/adminlte.min.css",
               "./node_modules/bootstrap-icons/font/bootstrap-icons.min.css",
-              "node_modules/overlayscrollbars/styles/overlayscrollbars.min.css"
+              "node_modules/overlayscrollbars/styles/overlayscrollbars.min.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-              "/node_modules/admin-lte/dist/js/adminlte.min.js"
+              "/node_modules/admin-lte/dist/js/adminlte.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {
