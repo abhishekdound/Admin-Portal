@@ -5,7 +5,8 @@ export const routes: Routes = [
   {path:'app',loadComponent:()=>import('./pages/portal-layout/portal-layout').then((c)=>c.PortalLayout),
     children:[
       {path:'',redirectTo:'dashboard',pathMatch:'full'},
-      {path:'dashboard',loadComponent:()=>import('./pages/main-content/dashboard/dashboard').then((c)=>c.Dashboard)}
+      {path:'dashboard',loadComponent:()=>import('./pages/main-content/dashboard/dashboard').then((c)=>c.Dashboard)},
+      {path:'users',loadComponent:()=>import('./pages/main-content/users/users').then(c=>c.Users)}
     ]
   }
 ];

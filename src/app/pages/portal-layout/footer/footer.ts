@@ -7,4 +7,5 @@ import { Component, signal, OnInit, OnDestroy } from '@angular/core';
   styleUrl: './footer.scss',
 })
 export class Footer  {
+  Date=new Date().getFullYear();
 }

@@ -1,7 +1,7 @@
 import { SideBarData } from "../interface/side-bar.interface";
 
 export const DetailData:SideBarData[]=[{
-  label:'Data1',
+  label:'Dashboard',
   icon:'bi bi-house',
   route:'dashboard',
   heading:false
@@ -27,4 +27,10 @@ export const DetailData:SideBarData[]=[{
     }
   ],
   heading:false
+},
+{
+  label:'Users',
+  heading:false,
+  icon:'bi bi-door-open',
+  route:'users'
 }]
