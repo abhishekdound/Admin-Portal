@@ -122,5 +122,79 @@ body.sidebar-collapse .app-sidebar {
 // }
 
 
+/* styles.scss (global) */
+
+.ngx-datatable.material .datatable-header .datatable-header-cell {
+  background-color: #6496c8 !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+.ngx-datatable.material .datatable-header-cell {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  color: #090003 !important;
+  text-transform: uppercase;
+  padding: 12px 10px !important;
+}
+.ngx-datatable .datatable-header {
+  position: sticky;
+  top: 0px;
+  // top: 56px;
+  z-index: 100;
+}
+.ngx-datatable .sort-btn:hover {
+  color: #520707;
+}
+
+.ngx-datatable .sort-btn {
+  color: #020219;
+}
+
+/* center header cells */
+.ngx-datatable.material .datatable-header-cell {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+/* center body cells */
+.ngx-datatable.material .datatable-body-cell {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.ngx-datatable.material .datatable-body-cell-label {
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+.ngx-datatable.material .datatable-row-center {
+  align-items: stretch !important;
+}
+
+.ngx-datatable.material .datatable-body-cell-label {
+  font-size: 16px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

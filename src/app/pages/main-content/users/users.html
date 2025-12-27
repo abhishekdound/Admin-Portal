@@ -9,14 +9,14 @@
   </div>
   </div>
 
-  <div class="ngx-datatable-table container me-5">
+  <div class="ngx-datatable-table container ">
     <ngx-datatable
       class="material striped"
       [rows]="userData()"
       [columnMode]="'force'"
       [headerHeight]="50"
       [footerHeight]="50"
-      [rowHeight]="60"
+      [rowHeight]="'auto'"
       [limit]="10"
       [sortType]="sortType"
     >
@@ -25,8 +25,8 @@
         <ng-template ngx-datatable-cell-template let-row="row">
           <img
             [src]="row.image"
-            width="40"
-            height="40"
+            width="60"
+            height="60"
             style="border-radius: 50%; object-fit: cover"
           />
         </ng-template>
@@ -38,15 +38,23 @@
       <!-- Age -->
       <ngx-datatable-column name="Age" prop="age" [sortable]="true"></ngx-datatable-column>
 
-      <!-- Gender -->
-      <ngx-datatable-column name="Gender" prop="gender" [sortable]="true"></ngx-datatable-column>
+      <!-- Gender And DOB -->
+      <ngx-datatable-column name="Gender-DOB"  [sortable]="false">
+         <ng-template ngx-datatable-cell-template let-row="row">
+          {{row.gender}},
+          {{row.dob | date:'MMM d, y'}}
+        </ng-template>
+      </ngx-datatable-column>
 
       <!-- Email -->
-      <ngx-datatable-column name="Email" prop="mail" [sortable]="true"></ngx-datatable-column>
+      <ngx-datatable-column  prop="mail" [sortable]="true">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          {{row.mail}}
+        </ng-template>
+      </ngx-datatable-column>
 
       
-      <!-- DOB -->
-      <ngx-datatable-column name="DOB" prop="dob" [sortable]="true"></ngx-datatable-column>
+      
     </ngx-datatable>
   </div>
 </div>
