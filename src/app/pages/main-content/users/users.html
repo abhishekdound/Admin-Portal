@@ -2,10 +2,11 @@
   <div class="user-main-dashboard-heaer">
     <app-dashboard-header [this]="'User'"></app-dashboard-header>
   </div>
-  
+  <!-- Search BAr -->
   <div class="searchBar">
     <div class="actions d-flex allign-item-center justify-content-end">
-    <input type="text" placeholder="Search..." />
+    <input type="text" placeholder="Search..." 
+    (input)="checkSearchBar($event)"/>
   </div>
   </div>
 
@@ -19,6 +20,7 @@
       [rowHeight]="'auto'"
       [limit]="10"
       [sortType]="sortType"
+      [loadingIndicator]="loading()"
     >
       <!-- Image -->
       <ngx-datatable-column name="Avatar" [sortable]="false">

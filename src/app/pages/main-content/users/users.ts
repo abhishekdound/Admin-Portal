@@ -14,7 +14,9 @@ import { DatePipe } from '@angular/common';
   styleUrl: './users.scss',
 })
 export class Users {
-  userData=signal<User[]>(UsersData);
+  userData=signal<User[]>([]);
+  temp=signal<User[]>([]);
+  loading=signal<boolean>(false);
   
   sortType = SortType.multi;
 
@@ -25,5 +27,30 @@ export class Users {
   { prop: 'gender' },
   { prop: 'mail' }
 ];
+ ngOnInit(){
+  this.getUserData();
+ }
+ getUserData(){
+  try{this.userData.set(UsersData);
+  this.temp.set(this.userData());
+  this.loading.set(true);}
+  catch(e){
+    console.log(e);
+  }
+  finally{
+    this.loading.set(false);
+  }
+
+
+
+ }
+
+
+  checkSearchBar(event:any){
+    const value:string=event.target.value as string;
+    console.log(event.target.value);
+
+
+  }
 
 }
