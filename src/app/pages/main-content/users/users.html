@@ -1,4 +1,52 @@
-<div class="user-main ">
-  <app-dashboard-header [this]="'User'"></app-dashboard-header>
-</div>
+<div class="mt-2 user-main">
+  <div class="user-main-dashboard-heaer">
+    <app-dashboard-header [this]="'User'"></app-dashboard-header>
+  </div>
+  
+  <div class="searchBar">
+    <div class="actions d-flex allign-item-center justify-content-end">
+    <input type="text" placeholder="Search..." />
+  </div>
+  </div>
 
+  <div class="ngx-datatable-table container me-5">
+    <ngx-datatable
+      class="material striped"
+      [rows]="userData()"
+      [columnMode]="'force'"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [rowHeight]="60"
+      [limit]="10"
+      [sortType]="sortType"
+    >
+      <!-- Image -->
+      <ngx-datatable-column name="Avatar" [sortable]="false">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          <img
+            [src]="row.image"
+            width="40"
+            height="40"
+            style="border-radius: 50%; object-fit: cover"
+          />
+        </ng-template>
+      </ngx-datatable-column>
+
+      <!-- Name -->
+      <ngx-datatable-column name="Name" prop="name" [sortable]="true"></ngx-datatable-column>
+
+      <!-- Age -->
+      <ngx-datatable-column name="Age" prop="age" [sortable]="true"></ngx-datatable-column>
+
+      <!-- Gender -->
+      <ngx-datatable-column name="Gender" prop="gender" [sortable]="true"></ngx-datatable-column>
+
+      <!-- Email -->
+      <ngx-datatable-column name="Email" prop="mail" [sortable]="true"></ngx-datatable-column>
+
+      
+      <!-- DOB -->
+      <ngx-datatable-column name="DOB" prop="dob" [sortable]="true"></ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>
