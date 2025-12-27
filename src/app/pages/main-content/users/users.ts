@@ -20,13 +20,6 @@ export class Users {
   
   sortType = SortType.multi;
 
-  columns = [
-  { prop: 'id' },
-  { prop: 'name' },
-  { prop: 'age' },
-  { prop: 'gender' },
-  { prop: 'mail' }
-];
  ngOnInit(){
   this.getUserData();
  }
@@ -49,6 +42,13 @@ export class Users {
   checkSearchBar(event:any){
     const value:string=event.target.value as string;
     console.log(event.target.value);
+    this.temp.set(this.userData().filter(
+      x=>{
+        return x.name.toLowerCase().indexOf(value.toLowerCase())!==-1 || x.mail.toLowerCase().indexOf(value.toLowerCase())!==-1 || x.gender.toLowerCase().indexOf(value.toLowerCase())!==-1|| x.dob.toLowerCase().indexOf(value.toLowerCase())!==-1|| x.age.toString().toLowerCase().indexOf(value.toLowerCase())!==-1 ||
+        !value
+        ;
+      }
+    ))
 
 
   }
