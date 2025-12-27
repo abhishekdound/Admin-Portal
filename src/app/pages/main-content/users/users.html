@@ -12,6 +12,7 @@
 
   <div class="ngx-datatable-table container ">
     <ngx-datatable
+      #table
       class="material striped"
       [rows]="temp()"
       [columnMode]="'force'"
@@ -21,6 +22,7 @@
       [limit]="10"
       [sortType]="sortType"
       [loadingIndicator]="loading()"
+      [offset]="0"
     >
       <!-- Image -->
       <ngx-datatable-column name="Avatar" [sortable]="false">

@@ -1,8 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ViewChild, viewChild } from '@angular/core';
 import { DashboardHeader } from "../../portal-layout/dashboard-header/dashboard-header/dashboard-header";
 import { User } from '../../../interface/user-data.interface';
 import { UsersData } from '../../../constants/user-data.constants';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { DatatableComponent, NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SortType } from '@swimlane/ngx-datatable';
 import { DatePipe } from '@angular/common';
 
@@ -17,6 +17,7 @@ export class Users {
   userData=signal<User[]>([]);
   temp=signal<User[]>([]);
   loading=signal<boolean>(false);
+  @ViewChild('table') table!: DatatableComponent;
   
   sortType = SortType.multi;
 
@@ -49,6 +50,7 @@ export class Users {
         ;
       }
     ))
+    this.table.offset=0;
 
 
   }
