@@ -55,4 +55,8 @@ export class Users {
 
   }
 
+  ngAfterViewInit() {
+  setTimeout(() => this.table.recalculate(), 0);
+}
+
 }

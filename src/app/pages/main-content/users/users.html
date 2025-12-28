@@ -8,13 +8,13 @@
       <input type="text" placeholder="Search..." (input)="checkSearchBar($event)" />
     </div>
   </div>
+  <div class=" ngx-datatable-table">
 
-  <div class="ngx-datatable-table container">
     <ngx-datatable
       #table
       class="material striped"
       [rows]="temp()"
-      [columnMode]="'force'"
+      [columnMode]="'standard'"
       [headerHeight]="50"
       [footerHeight]="50"
       [rowHeight]="'auto'"
@@ -22,6 +22,7 @@
       [sortType]="sortType"
       [loadingIndicator]="loading()"
       [offset]="0"
+      [scrollbarH]="true"
     >
       <!-- Image -->
       <ngx-datatable-column name="Avatar" [sortable]="false">
@@ -34,30 +35,40 @@
           />
         </ng-template>
       </ngx-datatable-column>
-
+  
       <!-- Name -->
-      <ngx-datatable-column name="Name" prop="name" [sortable]="true"></ngx-datatable-column>
-
+      <ngx-datatable-column
+        name="Name"
+        prop="name"
+        [sortable]="true"
+        [width]="200"
+      ></ngx-datatable-column>
+  
       <!-- Age -->
-      <ngx-datatable-column name="Age" prop="age" [sortable]="true"></ngx-datatable-column>
-
+      <ngx-datatable-column
+        name="Age"
+        prop="age"
+        [sortable]="true"
+        [width]="200"
+      ></ngx-datatable-column>
+  
       <!-- Gender And DOB -->
-      <ngx-datatable-column name="Gender-DOB" [sortable]="false">
+      <ngx-datatable-column name="Gender-DOB" [sortable]="false" [width]="200">
         <ng-template ngx-datatable-cell-template let-row="row">
           {{ row.gender }},
           {{ row.dob | date : 'MMM d, y' }}
         </ng-template>
       </ngx-datatable-column>
-
+  
       <!-- Email -->
-      <ngx-datatable-column prop="mail" [sortable]="true">
+      <ngx-datatable-column prop="mail" [sortable]="true" [width]="300">
         <ng-template ngx-datatable-cell-template let-row="row">
           {{ row.mail }}
         </ng-template>
       </ngx-datatable-column>
-
+  
       <!-- Action -->
-      <ngx-datatable-column name="Action">
+      <ngx-datatable-column name="Action" [width]="200" [sortable]="false">
         <ng-template ngx-datatable-cell-template>
           <div>
             <i class="fa-solid fa-pen-to-square me-3"></i>
