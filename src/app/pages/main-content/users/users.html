@@ -5,12 +5,11 @@
   <!-- Search BAr -->
   <div class="searchBar">
     <div class="actions d-flex allign-item-center justify-content-end">
-    <input type="text" placeholder="Search..." 
-    (input)="checkSearchBar($event)"/>
-  </div>
+      <input type="text" placeholder="Search..." (input)="checkSearchBar($event)" />
+    </div>
   </div>
 
-  <div class="ngx-datatable-table container ">
+  <div class="ngx-datatable-table container">
     <ngx-datatable
       #table
       class="material striped"
@@ -43,22 +42,29 @@
       <ngx-datatable-column name="Age" prop="age" [sortable]="true"></ngx-datatable-column>
 
       <!-- Gender And DOB -->
-      <ngx-datatable-column name="Gender-DOB"  [sortable]="false">
-         <ng-template ngx-datatable-cell-template let-row="row">
-          {{row.gender}},
-          {{row.dob | date:'MMM d, y'}}
+      <ngx-datatable-column name="Gender-DOB" [sortable]="false">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          {{ row.gender }},
+          {{ row.dob | date : 'MMM d, y' }}
         </ng-template>
       </ngx-datatable-column>
 
       <!-- Email -->
-      <ngx-datatable-column  prop="mail" [sortable]="true">
+      <ngx-datatable-column prop="mail" [sortable]="true">
         <ng-template ngx-datatable-cell-template let-row="row">
-          {{row.mail}}
+          {{ row.mail }}
         </ng-template>
       </ngx-datatable-column>
 
-      
-      
+      <!-- Action -->
+      <ngx-datatable-column name="Action">
+        <ng-template ngx-datatable-cell-template>
+          <div>
+            <i class="fa-solid fa-pen-to-square me-3"></i>
+            <i class="fa-solid fa-trash"></i>
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
     </ngx-datatable>
   </div>
 </div>
