@@ -185,13 +185,26 @@ body.sidebar-collapse .app-sidebar {
 // }
 
 .ngx-datatable-table {
-  width: 100%;
+  width: 99%;
   overflow-x: auto;
 }
 
 ngx-datatable {
-  min-width: 1300px; /* adjust based on total column width */
+  min-width: 1250px; /* adjust based on total column width */
 }
+
+ngx-datatable {
+  width: 100% !important;
+  max-width: 100%;
+}
+// body:not(.sidebar-collapse) .user-main {
+//   width: calc(100% - 220px) ;
+// }
+
+// body.sidebar-collapse .user-main {
+//   width: calc(100% - 100px);
+// }
+
 
 
 
