@@ -1,9 +1,40 @@
 // .ngx-datatable-table{
 //   width: 90vw;
 // }
-.searchBar{
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 0px;
   margin-right: 11px;
 }
+
+/* Search input */
+.searchBar input {
+  height: 38px;
+  width: 220px;
+  padding: 0 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.searchBar input:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.25);
+}
+
+/* Button */
+.addButton .btn {
+  height: 38px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
 
 // ngx-datatable {
 //   min-width: 50vw; /* adjust based on total column width */
@@ -12,6 +43,9 @@
 //   padding-right: 0 !important;
 //   padding-left: 0 !important;
 // }
+i:hover{
+  cursor: pointer;
+}
 
 
 

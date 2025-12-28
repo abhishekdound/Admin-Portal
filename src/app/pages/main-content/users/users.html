@@ -2,12 +2,21 @@
   <div class="user-main-dashboard-heaer">
     <app-dashboard-header [this]="'User'"></app-dashboard-header>
   </div>
-  <!-- Search BAr -->
+  <!-- Search Bar And Add User-->
+  <div class="actions">
   <div class="searchBar">
-    <div class="actions d-flex allign-item-center justify-content-end">
-      <input type="text" placeholder="Search..." (input)="checkSearchBar($event)" />
-    </div>
+    <input
+      type="text"
+      placeholder="Search..."
+      (input)="checkSearchBar($event)"
+    />
   </div>
+
+  <div class="addButton">
+    <button class="btn btn-primary">+ Add User</button>
+  </div>
+</div>
+
   <div class=" ngx-datatable-table">
 
     <ngx-datatable
@@ -71,8 +80,8 @@
       <ngx-datatable-column name="Action" [width]="200" [sortable]="false">
         <ng-template ngx-datatable-cell-template>
           <div>
-            <i class="fa-solid fa-pen-to-square me-3"></i>
-            <i class="fa-solid fa-trash"></i>
+            <i class="fa-solid fa-pen-to-square me-3" (click)="editRow()"></i>
+            <i class="fa-solid fa-trash" (click)="deleteRow()"></i>
           </div>
         </ng-template>
       </ngx-datatable-column>

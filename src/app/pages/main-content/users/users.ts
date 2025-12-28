@@ -54,6 +54,12 @@ export class Users {
 
 
   }
+  editRow(){
+
+  }
+  deleteRow(){
+
+  }
 
   ngAfterViewInit() {
   setTimeout(() => this.table.recalculate(), 0);
