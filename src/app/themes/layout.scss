@@ -204,6 +204,13 @@ ngx-datatable {
 // body.sidebar-collapse .user-main {
 //   width: calc(100% - 100px);
 // }
+.ngx-datatable.material
+.datatable-body-row:hover
+.datatable-row-center {
+  background-color: var(--dark-color) !important;
+}
+
+
 
 
 
