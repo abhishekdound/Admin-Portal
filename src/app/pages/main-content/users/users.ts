@@ -65,4 +65,37 @@ export class Users {
   setTimeout(() => this.table.recalculate(), 0);
 }
 
+  downloadInExcel() {
+  const rows = this.temp();
+  if (!rows.length) return;
+
+  const headers = ['Name', 'Age', 'Gender', 'DOB', 'Email'];
+
+  const csvRows = [
+    headers.join(','),
+
+    ...rows.map(user =>
+      [
+        user.name,
+        user.age,
+        user.gender,
+        user.dob
+          ? new Date(user.dob).toLocaleDateString('en-GB')
+          : '',
+        user.mail
+      ].map(v => `"${v}"`).join(',')
+    )
+  ];
+
+  const blob = new Blob([csvRows.join('\n')], {
+    type: 'text/csv;charset=utf-8;',
+  });
+
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'users.csv';
+  link.click();
+}
+
+
 }
