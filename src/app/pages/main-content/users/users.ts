@@ -57,9 +57,18 @@ export class Users {
   editRow(){
 
   }
-  deleteRow(){
-
+  deleteRow(row: User) {
+  const index = UsersData.findIndex(r => r.id === row.id);
+  if (index !== -1) {
+    UsersData.splice(index, 1);
   }
+
+  this.userData.set([...UsersData]);
+  this.temp.set([...UsersData]);
+
+  this.table.offset = 0;
+}
+
 
   ngAfterViewInit() {
   setTimeout(() => this.table.recalculate(), 0);
