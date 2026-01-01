@@ -1,3 +1,47 @@
 .home-link.active{
     color: rgb(122, 42, 202) !important;
   }
+
+  .app-content-header {
+  background: var(--background-color);
+}
+
+/* Title */
+.page-title {
+  font-weight: 600;
+  color: #111827;
+  letter-spacing: 0.3px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  background: transparent;
+  padding: 0;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "›";
+  color: #9ca3af;
+}
+
+/* Home icon */
+.home-link {
+  color: var(--bs-primary);
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.home-link:hover {
+  color: #0a58ca;
+}
+
+/* Mobile fix */
+@media (max-width: 576px) {
+  .breadcrumb {
+    justify-content: flex-start !important;
+    margin-top: 8px;
+  }
+}
+
+
+

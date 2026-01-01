@@ -1,23 +1,32 @@
-<!--begin::App Content Header-->
 <div class="app-content-header ">
-  <!--begin::Container-->
   <div class="container-fluid">
-    <!--begin::Row-->
-    <div class="main-row row">
-      <div class="col-sm-6 ps-5">
-        <h3 class="mb-0">{{ this.currentRoute() }}</h3>
+    <div class="row align-items-center py-3">
+      
+      <!-- Title -->
+      <div class="col-sm-6 ps-4">
+        <h4 class="page-title mb-0">
+          {{ currentRoute() }}
+        </h4>
       </div>
-      <div class="col-sm-6 ">
-        <ol class="breadcrumb float-sm-end">
-          <li class="breadcrumb-item" >
-            <a routerLink="../dashboard" routerLinkActive="active" class="home-link text-danger" ><i class="fa-regular fa-house"></i></a>
+
+      <!-- Breadcrumb -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb justify-content-end mb-0">
+          <li class="breadcrumb-item">
+            <a
+              routerLink="../dashboard"
+              routerLinkActive="active"
+              class="home-link"
+            >
+              <i class="fa-solid fa-house"></i>
+            </a>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">{{ this.currentRoute() }}</li>
+          <li class="breadcrumb-item active">
+            {{ currentRoute() }}
+          </li>
         </ol>
       </div>
+
     </div>
-    <!--end::Row-->
   </div>
-  <!--end::Container-->
 </div>
-<!--end::App Content Header-->
