@@ -4,25 +4,34 @@
   </div>
   <!-- Search Bar And Add User-->
   <div class="actions">
-  <div class="searchBar">
-    <input
-      type="text"
-      placeholder="Search..."
-      (input)="checkSearchBar($event)"
-    />
-  </div>
-  <!-- excel download button -->
-  <div>
-    <i class="fa-solid fa-file-csv" (click)="downloadInExcel()"></i>
+    <div class="searchBar">
+      <input type="text" placeholder="Search..." (input)="checkSearchBar($event)" />
+    </div>
+    <!-- excel download button -->
+    <div>
+      <i class="fa-solid fa-file-csv" (click)="downloadInExcel()"></i>
+    </div>
+
+    <div class="addButton">
+      <button class="btn btn-primary " (click)="openModal(template)">+ Add User</button>
+      <ng-template #template>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Modal</h4>
+          <button
+            type="button"
+            class="btn-close close pull-right"
+            aria-label="Close"
+            (click)="modalRef?.hide()"
+          >
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">This is a modal.</div>
+      </ng-template>
+    </div>
   </div>
 
-  <div class="addButton">
-    <button class="btn btn-primary">+ Add User</button>
-  </div>
-</div>
-
-  <div class=" ngx-datatable-table">
-
+  <div class="ngx-datatable-table">
     <ngx-datatable
       #table
       class="material striped"
@@ -48,7 +57,7 @@
           />
         </ng-template>
       </ngx-datatable-column>
-  
+
       <!-- Name -->
       <ngx-datatable-column
         name="Name"
@@ -56,7 +65,7 @@
         [sortable]="true"
         [width]="200"
       ></ngx-datatable-column>
-  
+
       <!-- Age -->
       <ngx-datatable-column
         name="Age"
@@ -64,7 +73,7 @@
         [sortable]="true"
         [width]="200"
       ></ngx-datatable-column>
-  
+
       <!-- Gender And DOB -->
       <ngx-datatable-column name="Gender-DOB" [sortable]="false" [width]="200">
         <ng-template ngx-datatable-cell-template let-row="row">
@@ -72,20 +81,17 @@
           {{ row.dob | date : 'MMM d, y' }}
         </ng-template>
       </ngx-datatable-column>
-  
+
       <!-- Email -->
       <ngx-datatable-column prop="mail" [sortable]="true" [width]="300">
         <ng-template ngx-datatable-cell-template let-row="row">
           {{ row.mail }}
         </ng-template>
       </ngx-datatable-column>
-  
+
       <!-- Action -->
       <ngx-datatable-column name="Action" [width]="200" [sortable]="false">
-        <ng-template ngx-datatable-cell-template
-        let-row="row"
-
-        >
+        <ng-template ngx-datatable-cell-template let-row="row">
           <div>
             <i class="fa-solid fa-pen-to-square me-3 text-secondary" (click)="editRow()"></i>
             <i class="fa-solid fa-trash text-danger" (click)="deleteRow(row)"></i>
