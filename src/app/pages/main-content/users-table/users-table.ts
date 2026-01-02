@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, input, ViewChild } from '@angular/core';
 import { DashboardHeader } from "../../portal-layout/dashboard-header/dashboard-header/dashboard-header";
 import { User } from '../../../interface/user-data.interface';
 import { DatePipe } from '@angular/common';
@@ -35,7 +35,7 @@ export class UsersTable {
 @ViewChild(MatSort) sort!: MatSort;
   
 
-
+  mode=input<'page' | 'card'>('page');
   modalType: 'Add' | 'Edit' = 'Add';
 selectedUser!: User;
 
@@ -47,10 +47,23 @@ constructor(private dialog: MatDialog,private storage: UserStorageService) {}
  ngOnInit(){
   
   this.dataSource = new MatTableDataSource(this.storage.getUsers());
+
+  if (this.mode() === 'card') {
+    this.displayedColumns = [
+      'avatar',
+      'name',
+      'genderDob', 
+      'mail'
+    ];
+  }
  }
  ngAfterViewInit() {
   this.dataSource.paginator = this.paginator;
   this.dataSource.sort = this.sort;
+  if (this.mode() === 'card') {
+    this.paginator.pageSize = 5;
+    this.paginator.hidePageSize = true;
+  }
 }
 
 checkSearchBar(event: Event) {

@@ -3,10 +3,11 @@ import { FormsModule } from '@angular/forms';
 import { DashboardHeader } from "../../portal-layout/dashboard-header/dashboard-header/dashboard-header";
 import { ChatMessage } from '../../../interface/ChatMessage.interface.constant';
 import { User } from '../../../interface/user-data.interface';
+import { UsersTable } from "../users-table/users-table";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [ DashboardHeader,FormsModule],
+  imports: [DashboardHeader, FormsModule, UsersTable],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })

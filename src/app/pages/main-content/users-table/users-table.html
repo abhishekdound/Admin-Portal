@@ -1,20 +1,24 @@
 <div>
   <!-- Search Bar And Add User-->
+   
     <div class="actions">
       <div class="searchBar">
         <input type="text" placeholder="Search..." (input)="checkSearchBar($event)" />
       </div>
       <!-- excel download button -->
-      <div>
-        <i class="fa-solid fa-file-excel" (click)="downloadInExcel()"></i>
-      </div>
-  
-      <div class="addButton">
-        <button class="btn btn-primary" (click)="openUserModal()">+ Add User</button>
-  
-  
-  
-      </div>
+       @if(mode()==='page'){
+
+         <div>
+           <i class="fa-solid fa-file-excel" (click)="downloadInExcel()"></i>
+         </div>
+     
+         <div class="addButton">
+           <button class="btn btn-primary" (click)="openUserModal()">+ Add User</button>
+     
+     
+     
+         </div>
+   }
     </div>
   
     <div class="ngx-datatable-table">
@@ -75,12 +79,14 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  
-  <mat-paginator
-    [pageSize]="10"
-    [pageSizeOptions]="[5,10,20]"
-    showFirstLastButtons>
-  </mat-paginator>
+  @if (mode()==='page') {
+
+    <mat-paginator
+      [pageSize]="10"
+      [pageSizeOptions]="[5,10,20]"
+      showFirstLastButtons>
+    </mat-paginator>
+  }
   
     </div>
 </div>
