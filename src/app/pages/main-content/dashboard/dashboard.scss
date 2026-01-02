@@ -34,6 +34,41 @@
 }
 
 .users-container {
-  max-height: 380px;
+  // max-height: 380px;
+  // overflow-y: auto;
+}
+
+.connectedSortable {
+  display: flex;
+}
+
+.connectedSortable > .card {
+  flex: 1;
+}
+
+/* Chat layout */
+.direct-chat {
+  display: flex;
+  flex-direction: column;
+}
+
+.direct-chat .card-body {
+  flex: 1;
   overflow-y: auto;
 }
+
+.direct-chat .card-footer {
+  flex-shrink: 0;
+}
+
+/* Users card layout */
+.users-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.users-container {
+  flex: 1;
+  overflow-y: auto;
+}
+

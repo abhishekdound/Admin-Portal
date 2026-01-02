@@ -69,6 +69,12 @@
   font-size: 0.85rem;
   box-shadow: 0 4px 10px rgba(99, 102, 241, 0.25);
 }
+.action1 i:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.15s ease;
+}
+
 
 
 
