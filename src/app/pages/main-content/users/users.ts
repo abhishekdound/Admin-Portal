@@ -1,4 +1,4 @@
-import { Component, signal, ViewChild, viewChild } from '@angular/core';
+import { Component, signal, TemplateRef, ViewChild } from '@angular/core';
 import { DashboardHeader } from "../../portal-layout/dashboard-header/dashboard-header/dashboard-header";
 import { User } from '../../../interface/user-data.interface';
 import { UsersData } from '../../../constants/user-data.constants';
@@ -6,9 +6,15 @@ import { DatatableComponent, NgxDatatableModule } from '@swimlane/ngx-datatable'
 import { SortType } from '@swimlane/ngx-datatable';
 import { DatePipe } from '@angular/common';
 
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+
+
 
 @Component({
   selector: 'app-users',
+  providers:[
+    BsModalService
+  ],
   imports: [DashboardHeader,NgxDatatableModule,DatePipe],
   templateUrl: './users.html',
   styleUrl: './users.scss',
@@ -20,6 +26,9 @@ export class Users {
   @ViewChild('table') table!: DatatableComponent;
   
   sortType = SortType.multi;
+
+    modalRef?: BsModalRef;
+  constructor(private modalService: BsModalService) {}
 
  ngOnInit(){
   this.getUserData();
@@ -39,7 +48,9 @@ export class Users {
 
  }
 
-
+   openModal(template: TemplateRef<void>) {
+    this.modalRef = this.modalService.show(template);
+  }
   checkSearchBar(event:any){
     const value:string=event.target.value as string;
     console.log(event.target.value);
