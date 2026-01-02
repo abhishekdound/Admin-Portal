@@ -78,8 +78,19 @@
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef>Action</th>
         <td mat-cell *matCellDef="let row">
-          <i class="fa-solid fa-pen-to-square me-3" (click)="openUserModal(row)"></i>
-          <i class="fa-solid fa-trash text-danger" (click)="deleteRow(row)"></i>
+          @if (mode()==='card') {
+
+            <i
+        class="fa-solid fa-comment-dots me-3 text-primary"
+        title="Chat"
+        (click)="openChat(row)">
+            </i>
+          }
+          @else {
+
+            <i class="fa-solid fa-pen-to-square me-3" (click)="openUserModal(row)"></i>
+            <i class="fa-solid fa-trash text-danger" (click)="deleteRow(row)"></i>
+          }
         </td>
       </ng-container>
 

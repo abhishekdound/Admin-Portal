@@ -4,6 +4,7 @@ import { DashboardHeader } from "../../portal-layout/dashboard-header/dashboard-
 import { ChatMessage } from '../../../interface/ChatMessage.interface.constant';
 import { User } from '../../../interface/user-data.interface';
 import { UsersTable } from "../users-table/users-table";
+import { UserMessage } from '../../enum/userMessage.enum';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,15 +20,18 @@ export class Dashboard {
   { userId: 2, sender: 'user', message: 'Any update?', time: '3:10 PM' },
 ];
 
-testUsers: User[] = [
-  { id: 1, name: 'Amit', image: 'assets/img/avatar.png' } as User,
-  { id: 2, name: 'Neha', image: 'assets/img/avatar.png' } as User
-];
 
 
   selectedChatUser!: User;
 currentMessages: ChatMessage[] = [];
 newMessage = '';
+
+ngOnInit() {
+  const saved = localStorage.getItem(UserMessage.User_Message);
+  if (saved) {
+    this.chatMessages = JSON.parse(saved);
+  }
+}
 
 openChat(user: User) {
   this.selectedChatUser = user;
@@ -48,8 +52,18 @@ sendMessage() {
 
   this.chatMessages.push(msg);
   this.currentMessages.push(msg);
+
+  localStorage.setItem(UserMessage.User_Message, JSON.stringify(this.chatMessages)); // ✅ persist
+
   this.newMessage = '';
+
+  setTimeout(() => {
+  const el = document.querySelector('.direct-chat-messages');
+  el?.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
+});
 }
+
+
 
 
 

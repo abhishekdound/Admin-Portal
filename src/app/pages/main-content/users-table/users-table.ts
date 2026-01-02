@@ -1,4 +1,4 @@
-import { Component, input, ViewChild } from '@angular/core';
+import { Component, EventEmitter, input, Output, ViewChild } from '@angular/core';
 import { DashboardHeader } from "../../portal-layout/dashboard-header/dashboard-header/dashboard-header";
 import { User } from '../../../interface/user-data.interface';
 import { DatePipe } from '@angular/common';
@@ -43,6 +43,9 @@ selectedUser!: User;
 imagePreview: string | null = null;
 imageError = '';
 constructor(private dialog: MatDialog,private storage: UserStorageService) {}
+@Output() chatUser = new EventEmitter<User>();
+
+
 
  ngOnInit(){
   
@@ -53,7 +56,8 @@ constructor(private dialog: MatDialog,private storage: UserStorageService) {}
       'avatar',
       'name',
       'genderDob',
-      'mail'
+      'mail',
+    'action'
     ];
   }
 
@@ -73,6 +77,10 @@ constructor(private dialog: MatDialog,private storage: UserStorageService) {}
 checkSearchBar(event: Event) {
   const value = (event.target as HTMLInputElement).value;
   this.dataSource.filter = value.trim().toLowerCase();
+}
+
+openChat(user: User) {
+  this.chatUser.emit(user);
 }
 
   deleteRow(row: User) {

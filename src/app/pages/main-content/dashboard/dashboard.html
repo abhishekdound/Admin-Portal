@@ -163,16 +163,6 @@
               </div>
             </div>
             <div class="card-body">
-              <!-- TEMP USER SELECT (for testing chat) -->
-              <div class="mb-3">
-                <button class="btn btn-outline-primary me-2" (click)="openChat(testUsers[0])">
-                  Chat with Amit
-                </button>
-
-                <button class="btn btn-outline-success" (click)="openChat(testUsers[1])">
-                  Chat with Neha
-                </button>
-              </div>
 
               <div class="direct-chat-messages">
                 @for (msg of currentMessages; track $index) {
@@ -264,7 +254,9 @@
     <div class="card-body p-0 bg-white users-container">
       <app-users-table
         #usersTable
-        [mode]="'card'">
+        [mode]="'card'"
+        
+  (chatUser)="openChat($event)">
       </app-users-table>
     </div>
 
