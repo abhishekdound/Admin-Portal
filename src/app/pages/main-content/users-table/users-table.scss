@@ -1,87 +1,73 @@
-// .ngx-datatable-table{
-//   width: 90vw;
-// }
-.actions {
+.premium-actions {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   gap: 12px;
-  margin: 0px 12px 0px 0;
+  padding: 12px 0;
 }
 
-/* Search box */
-.searchBar input {
-  height: 38px;
-  padding: 6px 12px;
-  border-radius: 6px;
-  border: 1px solid #ced4da;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+/* Search */
+.searchBar {
+  position: relative;
 }
 
-.searchBar input:focus {
-  border-color: var(--bs-primary);
-  box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.25);
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: #9ca3af;
 }
 
-/* Excel icon */
-.actions i.fa-file-excel {
-  font-size: 35px;
-  color: #198754; /* bootstrap success green */
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 6px;
-  transition: background 0.2s, transform 0.2s;
-}
-
-.actions i.fa-file-excel:hover {
-  background: rgba(25, 135, 84, 0.1);
-  transform: scale(1.1);
-}
-
-/* Add button */
-.addButton .btn {
-  height: 38px;
-  padding: 0 16px;
-  border-radius: 6px;
-}
-
-
-/* Search input */
-.searchBar input {
-  height: 38px;
+.search-input {
+  padding: 6px 10px 6px 28px;
   width: 220px;
-  padding: 0 12px;
-  border: 1px solid #ced4da;
-  border-radius: 6px;
-  font-size: 14px;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
   outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
 }
 
-.searchBar input:focus {
-  border-color: #0d6efd;
-  box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.25);
-}
-
-/* Button */
-.addButton .btn {
-  height: 38px;
-  padding: 0 16px;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 6px;
-}
-
-
-// ngx-datatable {
-//   min-width: 50vw; /* adjust based on total column width */
-// }
-// .user-main {
-//   padding-right: 0 !important;
-//   padding-left: 0 !important;
-// }
-i:hover{
+/* Icon buttons */
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.icon-btn i {
+  font-size: 1rem;
+}
+
+/* Excel button */
+.excel-btn i {
+  color: #16a34a;
+}
+
+.icon-btn:hover {
+  background: #f9fafb;
+  transform: translateY(-1px);
+}
+
+/* Add User */
+.add-user-btn {
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.25);
 }
 
 

@@ -2,20 +2,36 @@
   <!-- Search Bar And Add User-->
 
   @if(mode()==='page'){
-  <div class="actions">
-    <div class="searchBar">
-      <input type="text" placeholder="Search..." (input)="checkSearchBar($event)" />
-    </div>
-    <!-- excel download button -->
-
-    <div>
-      <i class="fa-solid fa-file-excel" (click)="downloadInExcel()"></i>
-    </div>
-
-    <div class="addButton">
-      <button class="btn btn-primary" (click)="openUserModal()">+ Add User</button>
-    </div>
+  <div class="actions premium-actions">
+  <!-- Search -->
+  <div class="searchBar position-relative">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input
+      type="text"
+      placeholder="Search users..."
+      (input)="checkSearchBar($event)"
+      class="search-input"
+    />
   </div>
+
+  <!-- Excel -->
+  <button
+    type="button"
+    class="icon-btn excel-btn"
+    title="Export to Excel"
+    (click)="downloadInExcel()">
+    <i class="fa-solid fa-file-excel"></i>
+  </button>
+
+  <!-- Add User -->
+  <button
+    class="btn btn-primary add-user-btn"
+    (click)="openUserModal()">
+    <i class="fa-solid fa-plus me-1"></i>
+    Add User
+  </button>
+</div>
+
   }
 
   <div class="ngx-datatable-table">
