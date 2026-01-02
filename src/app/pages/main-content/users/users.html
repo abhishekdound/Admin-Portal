@@ -15,23 +15,103 @@
     <div class="addButton">
       <button class="btn btn-primary" (click)="openModal(template)">+ Add User</button>
       <ng-template #template>
-  <div class="modal-header">
-    <h4 class="modal-title">{{ modalType }} User</h4>
-    <button class="btn-close" (click)="modalRef?.hide()"></button>
-  </div>
+  <form #userForm="ngForm" (ngSubmit)="saveUser(userForm)">
+    <div class="modal-header">
+      <h4 class="modal-title">{{ modalType }} User</h4>
+      <button class="btn-close" (click)="modalRef?.hide()"></button>
+    </div>
 
-  <div class="modal-body">
-    <input class="form-control mb-2" placeholder="Name" [(ngModel)]="selectedUser.name" />
-    <input class="form-control mb-2" type="number" placeholder="Age" [(ngModel)]="selectedUser.age" />
-    <input class="form-control mb-2" type="date" [(ngModel)]="selectedUser.dob" />
-    <input class="form-control mb-2" placeholder="Email" [(ngModel)]="selectedUser.mail" />
-  </div>
+    <div class="modal-body">
 
-  <div class="modal-footer">
-    <button class="btn btn-secondary" (click)="modalRef?.hide()">Cancel</button>
-    <button class="btn btn-primary" (click)="saveUser()">Save</button>
-  </div>
+      <!-- Name -->
+      <label class="form-label">Name</label>
+      <input
+        class="form-control mb-1"
+        name="name"
+        required
+        [(ngModel)]="selectedUser.name"
+        #name="ngModel"
+      />
+      <small class="text-danger" *ngIf="name.invalid && name.touched">
+        Name is required
+      </small>
+
+      <!-- Age -->
+      <label class="form-label mt-2">Age</label>
+      <input
+        type="number"
+        class="form-control mb-1"
+        name="age"
+        required
+        min="1"
+        [(ngModel)]="selectedUser.age"
+        #age="ngModel"
+      />
+      <small class="text-danger" *ngIf="age.invalid && age.touched">
+        Valid age required
+      </small>
+
+      <!-- DOB -->
+      <label class="form-label mt-2">Date of Birth</label>
+      <input
+        type="date"
+        class="form-control mb-1"
+        name="dob"
+        required
+        [(ngModel)]="selectedUser.dob"
+        #dob="ngModel"
+      />
+      <small class="text-danger" *ngIf="dob.invalid && dob.touched">
+        DOB required
+      </small>
+
+      <!-- Email -->
+      <label class="form-label mt-2">Email</label>
+      <input
+        type="email"
+        class="form-control mb-1"
+        name="mail"
+        placeholder="xyz@application.com"
+        required
+        email
+        [(ngModel)]="selectedUser.mail"
+        #mail="ngModel"
+      />
+      <small class="text-danger" *ngIf="mail.invalid && mail.touched">
+        Valid email required
+      </small>
+
+      <!-- Image -->
+      <label class="form-label mt-2">Profile Image</label>
+      <input
+        type="file"
+        class="form-control mb-1"
+        (change)="onImageSelect($event)"
+      />
+      <small class="text-danger">{{ imageError }}</small>
+
+      <img
+        *ngIf="imagePreview"
+        [src]="imagePreview"
+        width="80"
+        height="80"
+        class="rounded-circle mt-2"
+        style="object-fit: cover"
+      />
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modalRef?.hide()">
+        Cancel
+      </button>
+      <button class="btn btn-primary" type="submit" [disabled]="userForm.invalid">
+        Save
+      </button>
+    </div>
+  </form>
 </ng-template>
+
+
 
     </div>
   </div>

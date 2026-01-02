@@ -34,6 +34,10 @@ export class Users {
   modalType: 'Add' | 'Edit' = 'Add';
 selectedUser!: User;
 
+
+imagePreview: string | null = null;
+imageError = '';
+
  ngOnInit(){
   this.getUserData();
  }
@@ -55,7 +59,6 @@ selectedUser!: User;
    openModal(template: TemplateRef<any>, row?: User) {
   this.modalType = row ? 'Edit' : 'Add';
 
-  // clone to avoid live table mutation
   this.selectedUser = row
     ? { ...row }
     : {
@@ -68,9 +71,18 @@ selectedUser!: User;
         image: ''
       };
 
+  this.imagePreview = this.selectedUser.image || null;
+  this.imageError = '';
+
   this.modalRef = this.modalService.show(template);
 }
-  saveUser() {
+
+  saveUser(form: any) {
+  if (form.invalid) {
+    form.control.markAllAsTouched();
+    return;
+  }
+
   if (this.modalType === 'Add') {
     this.userData.update(users => [...users, this.selectedUser]);
     this.temp.update(users => [...users, this.selectedUser]);
@@ -86,6 +98,29 @@ selectedUser!: User;
   this.modalRef?.hide();
 }
 
+
+  onImageSelect(event: Event) {
+  const input = event.target as HTMLInputElement;
+
+  if (!input.files || input.files.length === 0) return;
+
+  const file = input.files[0];
+
+  if (!file.type.startsWith('image/')) {
+    this.imageError = 'Only image files allowed';
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    this.imagePreview = reader.result as string;
+    this.selectedUser.image = this.imagePreview;
+  };
+
+  reader.readAsDataURL(file);
+}
+
+
   checkSearchBar(event:any){
     const value:string=event.target.value as string;
     console.log(event.target.value);
@@ -98,9 +133,6 @@ selectedUser!: User;
     ))
     this.table.offset=0;
 
-
-  }
-  editRow(){
 
   }
   deleteRow(row: User) {
