@@ -2,8 +2,9 @@ import { Component, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from "@angular/router";
 
 @Component({
+  standalone:true,
   selector: 'app-dashboard-header',
-  imports: [RouterLinkActive,RouterLink],
+  imports: [RouterLink,RouterLinkActive],
   templateUrl: './dashboard-header.html',
   styleUrl: './dashboard-header.scss',
 })

@@ -1,10 +1,10 @@
-import { ChangeDetectorRef, Component, NgModule, signal, TemplateRef, ViewChild } from '@angular/core';
+import {  Component,  signal,  ViewChild } from '@angular/core';
 import { DashboardHeader } from "../../portal-layout/dashboard-header/dashboard-header/dashboard-header";
 import { User } from '../../../interface/user-data.interface';
 import { UsersData } from '../../../constants/user-data.constants';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MatColumnDef, MatTableDataSource, MatTableModule } from '@angular/material/table';
+import {  MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import * as XLSX from 'xlsx';
@@ -24,7 +24,6 @@ import { UserDialogue } from './user-dialogue/user-dialogue';
   styleUrl: './users.scss',
 })
 export class Users {
-  userData=signal<User[]>([]);
   dataSource = new MatTableDataSource<User>();
   displayedColumns:string[]= [
   'avatar',
@@ -61,9 +60,6 @@ checkSearchBar(event: Event) {
   this.dataSource.filter = value.trim().toLowerCase();
 }
 
- openEdit(row:any){
-
- }
 
 
 
