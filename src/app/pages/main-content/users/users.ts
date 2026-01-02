@@ -68,13 +68,9 @@ checkSearchBar(event: Event) {
 
 
   deleteRow(row: User) {
-  const index = UsersData.findIndex(r => r.id === row.id);
-  if (index !== -1) {
-    UsersData.splice(index, 1);
-  }
+  const updatedData = this.dataSource.data.filter(u => u.id !== row.id);
 
-  this.userData.set([...UsersData]);
-
+  this.dataSource.data = updatedData; 
 }
 
 
@@ -93,12 +89,11 @@ downloadInExcel() {
     Age: u.age,
     Gender: u.gender,
     Email: u.mail,
-    Image_URL: this.makeAbsoluteUrl(u.image) // 👈 IMAGE AS URL
+    Image_URL: this.makeAbsoluteUrl(u.image) // 
   }));
 
   const worksheet = XLSX.utils.json_to_sheet(excelData);
 
-  /* make Image_URL column clickable */
   const range = XLSX.utils.decode_range(worksheet['!ref']!);
   for (let r = 1; r <= range.e.r; r++) {
     const cellAddress = XLSX.utils.encode_cell({ r, c: 6 }); // column index
@@ -114,7 +109,6 @@ downloadInExcel() {
   XLSX.writeFile(workbook, 'users.xlsx');
 }
 
-/* convert relative path → absolute URL */
 makeAbsoluteUrl(path: string): string {
   if (!path) return '';
   if (path.startsWith('http')) return path;
