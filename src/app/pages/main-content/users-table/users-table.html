@@ -79,14 +79,15 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  @if (mode()==='page') {
+ 
 
     <mat-paginator
-      [pageSize]="10"
-      [pageSizeOptions]="[5,10,20]"
-      showFirstLastButtons>
-    </mat-paginator>
-  }
+  [pageSize]="mode() === 'card' ? 5 : 10"
+  [pageSizeOptions]="mode() === 'page' ? [5,10,20] : []"
+  showFirstLastButtons>
+</mat-paginator>
+
+  
   
     </div>
 </div>
