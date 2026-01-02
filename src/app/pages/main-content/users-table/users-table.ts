@@ -45,25 +45,23 @@ imageError = '';
 constructor(private dialog: MatDialog,private storage: UserStorageService) {}
 
  ngOnInit(){
-  
-  this.dataSource = new MatTableDataSource(this.storage.getUsers());
+  const users = this.storage.getUsers();
 
   if (this.mode() === 'card') {
+    this.dataSource = new MatTableDataSource(users.slice(0, 5)); // ✅ HARD LIMIT
     this.displayedColumns = [
       'avatar',
       'name',
-      'genderDob', 
+      'genderDob',
       'mail'
     ];
+  } else {
+    this.dataSource = new MatTableDataSource(users);
   }
  }
  ngAfterViewInit() {
   this.dataSource.paginator = this.paginator;
   this.dataSource.sort = this.sort;
-  if (this.mode() === 'card') {
-    this.paginator.pageSize = 5;
-    this.paginator.hidePageSize = true;
-  }
 }
 
 checkSearchBar(event: Event) {
