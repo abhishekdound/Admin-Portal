@@ -48,7 +48,7 @@ export class Users {
 
  }
 
-   openModal(template: TemplateRef<void>) {
+   openModal(template: TemplateRef<void>,row?:User) {
     this.modalRef = this.modalService.show(template);
   }
   checkSearchBar(event:any){

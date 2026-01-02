@@ -13,7 +13,7 @@
     </div>
 
     <div class="addButton">
-      <button class="btn btn-primary " (click)="openModal(template)">+ Add User</button>
+      <button class="btn btn-primary" (click)="openModal(template)">+ Add User</button>
       <ng-template #template>
         <div class="modal-header">
           <h4 class="modal-title pull-left">Modal</h4>
@@ -93,7 +93,26 @@
       <ngx-datatable-column name="Action" [width]="200" [sortable]="false">
         <ng-template ngx-datatable-cell-template let-row="row">
           <div>
-            <i class="fa-solid fa-pen-to-square me-3 text-secondary" (click)="editRow()"></i>
+            <!-- edit row -->
+            <i
+              class="fa-solid fa-pen-to-square me-3 text-secondary"
+              (click)="openModal(template, row)"
+            ></i>
+            <ng-template #template>
+              <div class="modal-header">
+                <h4 class="modal-title pull-left">Modal</h4>
+                <button
+                  type="button"
+                  class="btn-close close pull-right"
+                  aria-label="Close"
+                  (click)="modalRef?.hide()"
+                >
+                  <span aria-hidden="true" class="visually-hidden">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">This is a modal.</div>
+            </ng-template>
+            <!-- delete row -->
             <i class="fa-solid fa-trash text-danger" (click)="deleteRow(row)"></i>
           </div>
         </ng-template>
