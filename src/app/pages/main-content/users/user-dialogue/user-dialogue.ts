@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../../../interface/user-data.interface';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   standalone:true,
@@ -31,12 +32,12 @@ export class UserDialogue {
     age: 0,
     gender: 'Male',
     mail: '',
-    image: 'assets/img/avatar.png'
+    image: 'img/avatar.png'
   };
 
   constructor(
     private dialogRef: MatDialogRef<UserDialogue>,
-    @Inject(MAT_DIALOG_DATA) data: User
+    @Inject(MAT_DIALOG_DATA) data: User,private cdr: ChangeDetectorRef
   ) {
     if (data) this.user = data; 
   }
@@ -57,6 +58,7 @@ export class UserDialogue {
   const reader = new FileReader();
   reader.onload = () => {
     this.user.image = reader.result as string; 
+    this.cdr.detectChanges(); 
   };
   reader.readAsDataURL(file);
 }
