@@ -235,28 +235,37 @@
 
         <!-- Start col -->
        <div class="col-lg-5 connectedSortable">
-  <div class="card text-white bg-primary bg-gradient border-primary mb-4">
+  <div class="card border-0 shadow-sm mb-4 users-card">
 
-    <div class="card-header border-0">
-      <h3 class="card-title">Users</h3>
-      <div class="card-tools">
-        <button
-          type="button"
-          class="btn btn-primary btn-sm"
-          data-lte-toggle="card-collapse"
-        >
-          <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-          <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-        </button>
-      </div>
-    </div>
+    <!-- Header -->
+    <div class="card-header users-header d-flex align-items-center justify-content-between">
+  <div class="d-flex align-items-center gap-2">
+    <i class="fa-solid fa-users"></i>
+    <span class="fw-semibold">Users</span>
+  </div>
 
-    <div class="card-body p-0 users-container">
-      <app-users-table [mode]="'card'"></app-users-table>
+  <!-- Compact Search -->
+  <input
+    type="text"
+    class="form-control form-control-sm users-search"
+    placeholder="Search"
+    (input)="usersTable?.checkSearchBar($event)"
+  />
+</div>
+
+
+    <!-- Body -->
+    <div class="card-body p-0 bg-white users-container">
+      <app-users-table
+        #usersTable
+        [mode]="'card'">
+      </app-users-table>
     </div>
 
   </div>
 </div>
+
+
 
 
         <!-- /.Start col -->
