@@ -175,34 +175,40 @@
               </div>
 
               <div class="direct-chat-messages">
-                <div
-                  *ngFor="let msg of currentMessages"
-                  class="direct-chat-msg"
-                  [class.end]="msg.sender === 'me'"
-                >
-                  <div class="direct-chat-infos clearfix">
-                    <span class="direct-chat-name float-start">
-                      {{ msg.sender === 'me' ? 'You' : selectedChatUser?.name }}
-                    </span>
-                    <span class="direct-chat-timestamp float-end">
-                      {{ msg.time }}
-                    </span>
-                  </div>
+                @for (msg of currentMessages; track $index) {
 
-                  <img
-                    class="direct-chat-img"
-                    [src]="selectedChatUser?.image || 'assets/img/avatar.png'"
-                  />
-
-                  <div class="direct-chat-text">
-                    {{ msg.message }}
+                  <div
+                    
+                    class="direct-chat-msg"
+                    [class.end]="msg.sender === 'me'"
+                  >
+                    <div class="direct-chat-infos clearfix">
+                      <span class="direct-chat-name float-start">
+                        {{ msg.sender === 'me' ? 'You' : selectedChatUser?.name }}
+                      </span>
+                      <span class="direct-chat-timestamp float-end">
+                        {{ msg.time }}
+                      </span>
+                    </div>
+  
+                    <img
+                      class="direct-chat-img"
+                      [src]="selectedChatUser?.image || 'assets/img/avatar.png'"
+                    />
+  
+                    <div class="direct-chat-text">
+                      {{ msg.message }}
+                    </div>
                   </div>
-                </div>
+                }
 
                 <!-- EMPTY STATE -->
-                <div *ngIf="!currentMessages.length" class="text-center text-muted">
-                  Select a user to start chatting
-                </div>
+                 @if (!currentMessages.length) {
+
+                   <div  class="text-center text-muted">
+                     Select a user to start chatting
+                   </div>
+                 }
               </div>
             </div>
             <div class="card-footer">
