@@ -1,6 +1,10 @@
+
 import { Injectable } from '@angular/core';
+
 import { UserEnum } from '../../../enum/user-enum';
+
 import { User } from '../../../../interface/user-data.interface';
+
 import { UsersData } from '../../../../constants/user-data.constants';
 
 @Injectable({

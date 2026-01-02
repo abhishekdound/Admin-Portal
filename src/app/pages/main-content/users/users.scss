@@ -25,7 +25,7 @@
 }
 
 /* Excel icon */
-.actions i.fa-file-csv {
+.actions i.fa-file-excel {
   font-size: 35px;
   color: #198754; /* bootstrap success green */
   cursor: pointer;
@@ -34,7 +34,7 @@
   transition: background 0.2s, transform 0.2s;
 }
 
-.actions i.fa-file-csv:hover {
+.actions i.fa-file-excel:hover {
   background: rgba(25, 135, 84, 0.1);
   transform: scale(1.1);
 }
