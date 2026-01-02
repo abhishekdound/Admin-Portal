@@ -8,6 +8,8 @@ import { MatColumnDef, MatTableDataSource, MatTableModule } from '@angular/mater
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import * as XLSX from 'xlsx';
+import { MatDialog } from '@angular/material/dialog';
+import { UserDialogue } from './user-dialogue/user-dialogue';
 
 
 
@@ -44,6 +46,7 @@ selectedUser!: User;
 
 imagePreview: string | null = null;
 imageError = '';
+constructor(private dialog: MatDialog) {}
 
  ngOnInit(){
   this.dataSource.data = UsersData;
@@ -113,6 +116,28 @@ makeAbsoluteUrl(path: string): string {
   if (!path) return '';
   if (path.startsWith('http')) return path;
   return `${window.location}/${path}`;
+}
+
+    openUserModal(user?: User) {
+  const dialogRef = this.dialog.open(UserDialogue, {
+    width: '400px',
+    data: user ? { ...user } : null
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (!result) return;
+
+    if (user) {
+      this.dataSource.data = this.dataSource.data.map(u =>
+        u.id === result.id ? result : u
+      );
+    } else {
+      this.dataSource.data = [
+        ...this.dataSource.data,
+        { ...result, id: Date.now() }
+      ];
+    }
+  });
 }
 
 

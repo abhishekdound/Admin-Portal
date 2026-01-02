@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>{{ user.id ? 'Edit User' : 'Add User' }}</h2>
+
+<mat-dialog-content class="d-flex flex-column gap-2">
+    <!-- IMAGE PREVIEW -->
+  <div class="avatar-wrapper">
+    <img
+      [src]="user.image || 'assets/img/avatar.png'"
+      class="avatar-preview"
+    />
+  </div>
+
+  <!-- IMAGE UPLOAD -->
+  <input
+    type="file"
+    accept="image/*"
+    (change)="onImageSelect($event)"
+  />
+
+  <mat-form-field>
+    <input matInput placeholder="Name" [(ngModel)]="user.name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="date" [(ngModel)]="user.dob">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Age</mat-label>
+    <input matInput type="number" placeholder="Age" [(ngModel)]="user.age">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select [(ngModel)]="user.gender">
+      <mat-option value="Male">Male</mat-option>
+      <mat-option value="Female">Female</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Email" [(ngModel)]="user.mail">
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>

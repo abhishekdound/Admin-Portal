@@ -1,0 +1,11 @@
+.avatar-preview {
+  width: 80px;          /* control size here */
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;    /* crop correctly */
+  display: block;
+
+  /* optional polish */
+  border: 2px solid #6a0dad;
+  background-color: #fff;  /* PNG transparency fix */
+}
