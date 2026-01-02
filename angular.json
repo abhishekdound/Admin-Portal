@@ -35,10 +35,7 @@
               "./node_modules/bootstrap-icons/font/bootstrap-icons.min.css",
               "node_modules/overlayscrollbars/styles/overlayscrollbars.min.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-               "node_modules/@swimlane/ngx-datatable/index.css",
-  "node_modules/@swimlane/ngx-datatable/themes/material.css",
-  "node_modules/@swimlane/ngx-datatable/assets/icons.css"
+               "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
             "scripts": [
               "/node_modules/admin-lte/dist/js/adminlte.min.js",

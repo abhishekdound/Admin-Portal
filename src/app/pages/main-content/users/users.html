@@ -13,103 +13,7 @@
     </div>
 
     <div class="addButton">
-      <button class="btn btn-primary" (click)="openModal(template)">+ Add User</button>
-      <ng-template #template>
-  <form #userForm="ngForm" (ngSubmit)="saveUser(userForm)">
-    <div class="modal-header">
-      <h4 class="modal-title">{{ modalType }} User</h4>
-      <button class="btn-close" (click)="modalRef?.hide()"></button>
-    </div>
-
-    <div class="modal-body">
-
-      <!-- Name -->
-      <label class="form-label">Name</label>
-      <input
-        class="form-control mb-1"
-        name="name"
-        required
-        [(ngModel)]="selectedUser.name"
-        #name="ngModel"
-      />
-      <small class="text-danger" *ngIf="name.invalid && name.touched">
-        Name is required
-      </small>
-
-      <!-- Age -->
-      <label class="form-label mt-2">Age</label>
-      <input
-        type="number"
-        class="form-control mb-1"
-        name="age"
-        required
-        min="1"
-        [(ngModel)]="selectedUser.age"
-        #age="ngModel"
-      />
-      <small class="text-danger" *ngIf="age.invalid && age.touched">
-        Valid age required
-      </small>
-
-      <!-- DOB -->
-      <label class="form-label mt-2">Date of Birth</label>
-      <input
-        type="date"
-        class="form-control mb-1"
-        name="dob"
-        required
-        [(ngModel)]="selectedUser.dob"
-        #dob="ngModel"
-      />
-      <small class="text-danger" *ngIf="dob.invalid && dob.touched">
-        DOB required
-      </small>
-
-      <!-- Email -->
-      <label class="form-label mt-2">Email</label>
-      <input
-        type="email"
-        class="form-control mb-1"
-        name="mail"
-        placeholder="xyz@application.com"
-        required
-        email
-        [(ngModel)]="selectedUser.mail"
-        #mail="ngModel"
-      />
-      <small class="text-danger" *ngIf="mail.invalid && mail.touched">
-        Valid email required
-      </small>
-
-      <!-- Image -->
-      <label class="form-label mt-2">Profile Image</label>
-      <input
-        type="file"
-        class="form-control mb-1"
-        (change)="onImageSelect($event)"
-      />
-      <small class="text-danger">{{ imageError }}</small>
-
-      <img
-        *ngIf="imagePreview"
-        [src]="imagePreview"
-        width="80"
-        height="80"
-        class="rounded-circle mt-2"
-        style="object-fit: cover"
-      />
-    </div>
-
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="modalRef?.hide()">
-        Cancel
-      </button>
-      <button class="btn btn-primary" type="submit" [disabled]="userForm.invalid">
-        Save
-      </button>
-    </div>
-  </form>
-</ng-template>
+      <button class="btn btn-primary">+ Add User</button>
 
 
 
@@ -117,77 +21,67 @@
   </div>
 
   <div class="ngx-datatable-table">
-    <ngx-datatable
-      #table
-      class="material striped"
-      [rows]="temp()"
-      [columnMode]="'standard'"
-      [headerHeight]="50"
-      [footerHeight]="50"
-      [rowHeight]="'auto'"
-      [limit]="10"
-      [sortType]="sortType"
-      [loadingIndicator]="loading()"
-      [offset]="0"
-      [scrollbarH]="true"
-    >
-      <!-- Image -->
-      <ngx-datatable-column name="Avatar" [sortable]="false">
-        <ng-template ngx-datatable-cell-template let-row="row">
-          <img
-            [src]="row.image"
-            width="60"
-            height="60"
-            style="border-radius: 50%; object-fit: cover"
-          />
-        </ng-template>
-      </ngx-datatable-column>
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z2">
 
-      <!-- Name -->
-      <ngx-datatable-column
-        name="Name"
-        prop="name"
-        [sortable]="true"
-        [width]="200"
-      ></ngx-datatable-column>
+  <!-- Avatar -->
+  <ng-container matColumnDef="avatar">
+    <th mat-header-cell *matHeaderCellDef> Avatar </th>
+    <td mat-cell *matCellDef="let row">
+      <img
+        [src]="row.image"
+        width="50"
+        height="50"
+        style="border-radius:50%; object-fit:cover"
+      />
+    </td>
+  </ng-container>
 
-      <!-- Age -->
-      <ngx-datatable-column
-        name="Age"
-        prop="age"
-        [sortable]="true"
-        [width]="200"
-      ></ngx-datatable-column>
+  <!-- Name -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+    <td mat-cell *matCellDef="let row"> {{ row.name }} </td>
+  </ng-container>
 
-      <!-- Gender And DOB -->
-      <ngx-datatable-column name="Gender-DOB" [sortable]="false" [width]="200">
-        <ng-template ngx-datatable-cell-template let-row="row">
-          {{ row.gender }},
-          {{ row.dob | date : 'MMM d, y' }}
-        </ng-template>
-      </ngx-datatable-column>
+  <!-- Age -->
+  <ng-container matColumnDef="age">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Age </th>
+    <td mat-cell *matCellDef="let row"> {{ row.age }} </td>
+  </ng-container>
 
-      <!-- Email -->
-      <ngx-datatable-column prop="mail" [sortable]="true" [width]="300">
-        <ng-template ngx-datatable-cell-template let-row="row">
-          {{ row.mail }}
-        </ng-template>
-      </ngx-datatable-column>
+  <!-- Gender + DOB -->
+  <ng-container matColumnDef="genderDob">
+    <th mat-header-cell *matHeaderCellDef> Gender / DOB </th>
+    <td mat-cell *matCellDef="let row">
+      {{ row.gender }}, {{ row.dob | date:'MMM d, y' }}
+    </td>
+  </ng-container>
 
-      <!-- Action -->
-      <ngx-datatable-column name="Action" [width]="200" [sortable]="false">
-        <ng-template ngx-datatable-cell-template let-row="row">
-          <div>
-            <!-- edit row -->
-            <i
-              class="fa-solid fa-pen-to-square me-3 text-secondary"
-              (click)="openModal(template, row)"
-            ></i>
-            <!-- delete row -->
-            <i class="fa-solid fa-trash text-danger" (click)="deleteRow(row)"></i>
-          </div>
-        </ng-template>
-      </ngx-datatable-column>
-    </ngx-datatable>
+  <!-- Email -->
+  <ng-container matColumnDef="mail">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+    <td mat-cell *matCellDef="let row"> {{ row.mail }} </td>
+  </ng-container>
+
+  <!-- Action -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let row">
+      <i class="fa-solid fa-pen-to-square me-3"
+         (click)="openEdit(row)"></i>
+      <i class="fa-solid fa-trash text-danger"
+         (click)="deleteRow(row)"></i>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[5,10,20]"
+  showFirstLastButtons>
+</mat-paginator>
+
   </div>
 </div>
