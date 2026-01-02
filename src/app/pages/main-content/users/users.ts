@@ -1,4 +1,4 @@
-import { Component, signal, TemplateRef, ViewChild } from '@angular/core';
+import { Component, NgModule, signal, TemplateRef, ViewChild } from '@angular/core';
 import { DashboardHeader } from "../../portal-layout/dashboard-header/dashboard-header/dashboard-header";
 import { User } from '../../../interface/user-data.interface';
 import { UsersData } from '../../../constants/user-data.constants';
@@ -7,6 +7,7 @@ import { SortType } from '@swimlane/ngx-datatable';
 import { DatePipe } from '@angular/common';
 
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   providers:[
     BsModalService
   ],
-  imports: [DashboardHeader,NgxDatatableModule,DatePipe],
+  imports: [DashboardHeader,NgxDatatableModule,DatePipe,FormsModule],
   templateUrl: './users.html',
   styleUrl: './users.scss',
 })
@@ -30,7 +31,8 @@ export class Users {
     modalRef?: BsModalRef;
   constructor(private modalService: BsModalService) {}
 
-  modalType:string|null=null;
+  modalType: 'Add' | 'Edit' = 'Add';
+selectedUser!: User;
 
  ngOnInit(){
   this.getUserData();
@@ -50,10 +52,40 @@ export class Users {
 
  }
 
-   openModal(template: TemplateRef<void>,row?:User) {
-    this.modalType=row?'Edit':'Add';
-    this.modalRef = this.modalService.show(template);
+   openModal(template: TemplateRef<any>, row?: User) {
+  this.modalType = row ? 'Edit' : 'Add';
+
+  // clone to avoid live table mutation
+  this.selectedUser = row
+    ? { ...row }
+    : {
+        id: Date.now(),
+        name: '',
+        age: 0,
+        gender: 'Male',
+        dob: '',
+        mail: '',
+        image: ''
+      };
+
+  this.modalRef = this.modalService.show(template);
+}
+  saveUser() {
+  if (this.modalType === 'Add') {
+    this.userData.update(users => [...users, this.selectedUser]);
+    this.temp.update(users => [...users, this.selectedUser]);
+  } else {
+    this.userData.update(users =>
+      users.map(u => (u.id === this.selectedUser.id ? this.selectedUser : u))
+    );
+    this.temp.update(users =>
+      users.map(u => (u.id === this.selectedUser.id ? this.selectedUser : u))
+    );
   }
+
+  this.modalRef?.hide();
+}
+
   checkSearchBar(event:any){
     const value:string=event.target.value as string;
     console.log(event.target.value);
