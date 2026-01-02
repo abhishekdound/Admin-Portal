@@ -4,7 +4,7 @@ import { DashboardHeader } from "../../portal-layout/dashboard-header/dashboard-
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterLink, DashboardHeader],
+  imports: [ DashboardHeader],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })

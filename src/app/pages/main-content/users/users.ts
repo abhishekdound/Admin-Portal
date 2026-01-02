@@ -30,6 +30,8 @@ export class Users {
     modalRef?: BsModalRef;
   constructor(private modalService: BsModalService) {}
 
+  modalType:string|null=null;
+
  ngOnInit(){
   this.getUserData();
  }
@@ -49,6 +51,7 @@ export class Users {
  }
 
    openModal(template: TemplateRef<void>,row?:User) {
+    this.modalType=row?'Edit':'Add';
     this.modalRef = this.modalService.show(template);
   }
   checkSearchBar(event:any){
