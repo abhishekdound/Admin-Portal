@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { MatColumnDef, MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
+import * as XLSX from 'xlsx';
 
 
 
@@ -22,8 +23,6 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 })
 export class Users {
   userData=signal<User[]>([]);
-  temp=signal<User[]>([]);
-  loading=signal<boolean>(false);
   dataSource = new MatTableDataSource<User>();
   displayedColumns:string[]= [
   'avatar',
@@ -58,20 +57,6 @@ checkSearchBar(event: Event) {
   const value = (event.target as HTMLInputElement).value;
   this.dataSource.filter = value.trim().toLowerCase();
 }
- getUserData(){
-  try{this.userData.set(UsersData);
-  this.temp.set(this.userData());
-  this.loading.set(true);}
-  catch(e){
-    console.log(e);
-  }
-  finally{
-    this.loading.set(false);
-  }
-
-
-
- }
 
  openEdit(row:any){
 
@@ -89,44 +74,53 @@ checkSearchBar(event: Event) {
   }
 
   this.userData.set([...UsersData]);
-  this.temp.set([...UsersData]);
 
 }
 
 
   
 
-  downloadInExcel() {
-  const rows = this.temp();
-  if (!rows.length) return;
 
-  const headers = ['Name', 'Age', 'Gender', 'DOB', 'Email'];
+downloadInExcel() {
+  const data = this.dataSource.filteredData.length
+    ? this.dataSource.filteredData
+    : this.dataSource.data;
 
-  const csvRows = [
-    headers.join(','),
+  const excelData = data.map(u => ({
+    ID: u.id,
+    Name: u.name,
+    DOB: u.dob,
+    Age: u.age,
+    Gender: u.gender,
+    Email: u.mail,
+    Image_URL: this.makeAbsoluteUrl(u.image) // 👈 IMAGE AS URL
+  }));
 
-    ...rows.map(user =>
-      [
-        user.name,
-        user.age,
-        user.gender,
-        user.dob
-          ? new Date(user.dob).toLocaleDateString('en-GB')
-          : '',
-        user.mail
-      ].map(v => `"${v}"`).join(',')
-    )
-  ];
+  const worksheet = XLSX.utils.json_to_sheet(excelData);
 
-  const blob = new Blob([csvRows.join('\n')], {
-    type: 'text/csv;charset=utf-8;',
-  });
+  /* make Image_URL column clickable */
+  const range = XLSX.utils.decode_range(worksheet['!ref']!);
+  for (let r = 1; r <= range.e.r; r++) {
+    const cellAddress = XLSX.utils.encode_cell({ r, c: 6 }); // column index
+    const cell = worksheet[cellAddress];
+    if (cell?.v) {
+      cell.l = { Target: cell.v };
+    }
+  }
 
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'users.csv';
-  link.click();
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, 'Users');
+
+  XLSX.writeFile(workbook, 'users.xlsx');
 }
+
+/* convert relative path → absolute URL */
+makeAbsoluteUrl(path: string): string {
+  if (!path) return '';
+  if (path.startsWith('http')) return path;
+  return `${window.location}/${path}`;
+}
+
 
 
 }
