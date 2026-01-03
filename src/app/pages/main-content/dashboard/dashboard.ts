@@ -15,57 +15,79 @@ import { UserChats } from '../../../interface/userChats.interface';
   styleUrl: './dashboard.scss',
 })
 export class Dashboard implements OnInit {
-  chats: UserChats = {};
+
+  chats: Record<number, ChatMessage[]> = {};
   users: User[] = [];
 
-  selectedChatUser!: User;
+  selectedChatUser: User | null = null;
   currentMessages: ChatMessage[] = [];
   newMessage = '';
 
   ngOnInit() {
-    const usersData = localStorage.getItem(UserEnum.UserData);
-    this.users = usersData ? JSON.parse(usersData) : [];
+  // load users
+  const usersData = localStorage.getItem(UserEnum.UserData);
+  this.users = usersData ? JSON.parse(usersData) : [];
 
-    const savedChats = localStorage.getItem(UserMessage.User_Message);
-    this.chats = savedChats ? JSON.parse(savedChats) : {};
+  // load chats safely
+  const savedChats = localStorage.getItem(UserMessage.User_Message);
+  this.chats = savedChats ? JSON.parse(savedChats) : {};
 
-    this.users.forEach((user) => {
-      if (!this.chats[user.id]) {
-        this.chats[user.id] = [];
-      }
-    });
-
-    this.persistChats();
-
-    if (this.users.length) {
-      this.openChat(this.users[0]);
+  // 🔥 FORCE correct structure
+  this.users.forEach(user => {
+    if (!Array.isArray(this.chats[user.id])) {
+      this.chats[user.id] = [];   // ✅ GUARANTEED ARRAY
     }
+  });
+
+  this.persistChats();
+}
+
+
+  // 🔥 CALLED FROM UsersTable
+  openChat(user: User) {
+  this.selectedChatUser = user;
+
+  // 🔥 safety guard
+  if (!Array.isArray(this.chats[user.id])) {
+    this.chats[user.id] = [];
+    this.persistChats();
   }
 
-  openChat(user: User) {
-    this.selectedChatUser = user;
-    this.currentMessages = this.chats[user.id] || [];
-  }
+  this.currentMessages = [...this.chats[user.id]];
+}
+
 
   sendMessage() {
-    if (!this.newMessage.trim() || !this.selectedChatUser) return;
+  if (!this.selectedChatUser) return;
+  if (!this.newMessage.trim()) return;
 
-    const msg: ChatMessage = {
-      userId: this.selectedChatUser.id,
-      sender: 'me',
-      message: this.newMessage,
-      time: new Date().toLocaleTimeString(),
-    };
+  const userId = this.selectedChatUser.id;
 
-    this.chats[this.selectedChatUser.id].push(msg);
-    this.persistChats();
-
-    this.newMessage = '';
-    setTimeout(() => this.scrollBottom());
+  // 🔥 GUARANTEE array
+  if (!Array.isArray(this.chats[userId])) {
+    this.chats[userId] = [];
   }
 
+  const msg: ChatMessage = {
+    userId,
+    sender: 'me',
+    message: this.newMessage,
+    time: new Date().toLocaleTimeString()
+  };
+
+  this.chats[userId].push(msg);
+  this.currentMessages = [...this.chats[userId]];
+
+  this.persistChats();
+  this.newMessage = '';
+}
+
+
   private persistChats() {
-    localStorage.setItem(UserMessage.User_Message, JSON.stringify(this.chats));
+    localStorage.setItem(
+      UserMessage.User_Message,
+      JSON.stringify(this.chats)
+    );
   }
 
   private scrollBottom() {
@@ -73,3 +95,4 @@ export class Dashboard implements OnInit {
     el?.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
   }
 }
+
