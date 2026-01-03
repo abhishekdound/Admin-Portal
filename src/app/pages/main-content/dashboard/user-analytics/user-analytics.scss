@@ -1,20 +1,13 @@
-/* Outer scroll container */
-.analytics-scroll {
-  width: 100%;
-  overflow-x: auto;     /* ✅ horizontal scroll */
-  overflow-y: hidden;
-}
-
-/* Charts stay in one row */
 .analytics-row {
   display: flex;
   gap: 16px;
-  min-width: max-content; /* ✅ prevents cutting */
+  width: 100%;
 }
 
-/* Each chart card */
+/* Each chart takes equal width */
 .analytics-card {
-  flex: 0 0 520px;  /* ✅ fixed readable width */
+  flex: 1;
+  min-width: 0; /* 🔥 VERY IMPORTANT (prevents cut) */
 }
 
 /* Chart height */
@@ -23,3 +16,22 @@ ngx-charts-pie-chart {
   display: block;
   height: 300px;
 }
+
+/* Stack vertically on small screens */
+@media (max-width: 992px) {
+  .analytics-row {
+    flex-direction: column;
+  }
+}
+
+.card {
+  background: #474356;
+  color: #000000;
+}
+
+.card-header {
+  background: #152752;
+  border-bottom: 1px solid #334155;
+  color: #e5e7eb;
+}
+

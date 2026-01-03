@@ -4,12 +4,15 @@
     <div class="analytics-card">
       <div class="card shadow-sm h-100">
         <div class="card-header fw-semibold">Users by Gender</div>
-        <div class="card-body">
+
+        <div class="card-body chart-wrapper">
           <ngx-charts-bar-vertical
             [results]="genderChartData"
             [view]="chartView"
+            [scheme]="colorScheme"
             [xAxis]="true"
-            [yAxis]="true">
+            [yAxis]="true"
+          >
           </ngx-charts-bar-vertical>
         </div>
       </div>
@@ -19,12 +22,14 @@
     <div class="analytics-card">
       <div class="card shadow-sm h-100">
         <div class="card-header fw-semibold">Age Distribution</div>
-        <div class="card-body">
+        <div class="card-body chart-wrapper">
           <ngx-charts-pie-chart
             [results]="ageChartData"
             [view]="chartView"
+            [scheme]="colorScheme"
             [legend]="true"
-            [labels]="true">
+            [labels]="true"
+          >
           </ngx-charts-pie-chart>
         </div>
       </div>

@@ -14,21 +14,35 @@ export class UserAnalytics implements OnInit {
   chartView: [number, number] = [600, 300];
   users: User[] = [];
   genderChartData: any[] = [];
-  
+
   ageChartData: any[] = [];
+
+  colorScheme: any = {
+  domain: ['#4f46e5', '#22c55e', '#f59e0b', '#ef4444']
+};
+
+
 
   constructor(private userStorage: UserStorageService) {}
 
   ngOnInit() {
-    
-  this.updateChartSize();
-  window.addEventListener('resize', this.updateChartSize.bind(this));
+    this.updateChartView();
+    window.addEventListener('resize', this.updateChartView.bind(this));
+
+    const observer = new MutationObserver(() => {
+      setTimeout(() => this.updateChartView(), 300); // wait for animation
+    });
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
     this.users = this.userStorage.getUsers();
 
     console.log('Users loaded:', this.users); // 👈 ADD THIS
 
     this.prepareGenderChart();
-    
+
     this.prepareAgeChart();
   }
 
@@ -48,22 +62,21 @@ export class UserAnalytics implements OnInit {
     const age = (u: User) => u.age;
 
     this.ageChartData = [
-      { name: '18–22', value: this.users.filter(u => age(u) >= 18 && age(u) <= 22).length },
-      { name: '23–27', value: this.users.filter(u => age(u) >= 23 && age(u) <= 27).length },
-      { name: '28–35', value: this.users.filter(u => age(u) >= 28 && age(u) <= 35).length },
-      { name: '36+', value: this.users.filter(u => age(u) >= 36).length }
+      { name: '18–22', value: this.users.filter((u) => age(u) >= 18 && age(u) <= 22).length },
+      { name: '23–27', value: this.users.filter((u) => age(u) >= 23 && age(u) <= 27).length },
+      { name: '28–35', value: this.users.filter((u) => age(u) >= 28 && age(u) <= 35).length },
+      { name: '36+', value: this.users.filter((u) => age(u) >= 36).length },
     ];
   }
-  updateChartSize() {
-  const width = window.innerWidth;
+  updateChartView() {
+    const width = window.innerWidth;
 
-  // adjust based on layout
-  if (width > 1400) {
-    this.chartView = [600, 300];
-  } else if (width > 992) {
-    this.chartView = [500, 300];
-  } else {
-    this.chartView = [350, 300];
+    if (width > 1600) {
+      this.chartView = [520, 300];
+    } else if (width > 1200) {
+      this.chartView = [480, 300];
+    } else {
+      this.chartView = [420, 300];
+    }
   }
-}
 }
