@@ -7,10 +7,11 @@ import { UsersTable } from '../users-table/users-table';
 import { UserMessage } from '../../enum/userMessage.enum';
 import { UserEnum } from '../../enum/user-enum';
 import { UserChats } from '../../../interface/userChats.interface';
+import { UserAnalytics } from './user-analytics/user-analytics';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [DashboardHeader, FormsModule, UsersTable],
+  imports: [DashboardHeader, FormsModule, UsersTable,UserAnalytics],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })

@@ -1,0 +1,14 @@
+<div class="card shadow-sm">
+  <div class="card-header fw-semibold">
+    Users by Gender
+  </div>
+
+  <div class="card-body">
+    <ngx-charts-bar-vertical
+      [results]="genderChartData"
+      [xAxis]="true"
+      [yAxis]="true"
+      [animations]="true">
+    </ngx-charts-bar-vertical>
+  </div>
+</div>
