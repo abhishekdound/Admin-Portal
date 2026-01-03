@@ -24,14 +24,40 @@ ngx-charts-pie-chart {
   }
 }
 
+/* ===============================
+   GLOBAL PREMIUM CARD (CHAT STYLE)
+================================ */
+
 .card {
-  background: #474356;
-  color: #000000;
-}
-
-.card-header {
-  background: #152752;
-  border-bottom: 1px solid #334155;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0f172a, #020617);
   color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
+/* ---------- HEADER ---------- */
+.card-header {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #ffffff;
+  border-bottom: none;
+  padding: 14px 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ---------- BODY ---------- */
+.card-body {
+  background: linear-gradient(180deg, #bdc2d7, #030718);
+  padding: 18px;
+}
+
+/* ---------- FOOTER ---------- */
+.card-footer {
+  background: #3f509d;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px;
+}
