@@ -1,14 +1,33 @@
-<div class="card shadow-sm">
-  <div class="card-header fw-semibold">
-    Users by Gender
-  </div>
+<div class="analytics-scroll">
+  <div class="analytics-row">
+    <!-- Gender Chart -->
+    <div class="analytics-card">
+      <div class="card shadow-sm h-100">
+        <div class="card-header fw-semibold">Users by Gender</div>
+        <div class="card-body">
+          <ngx-charts-bar-vertical
+            [results]="genderChartData"
+            [view]="chartView"
+            [xAxis]="true"
+            [yAxis]="true">
+          </ngx-charts-bar-vertical>
+        </div>
+      </div>
+    </div>
 
-  <div class="card-body">
-    <ngx-charts-bar-vertical
-      [results]="genderChartData"
-      [xAxis]="true"
-      [yAxis]="true"
-      [animations]="true">
-    </ngx-charts-bar-vertical>
+    <!-- Age Distribution -->
+    <div class="analytics-card">
+      <div class="card shadow-sm h-100">
+        <div class="card-header fw-semibold">Age Distribution</div>
+        <div class="card-body">
+          <ngx-charts-pie-chart
+            [results]="ageChartData"
+            [view]="chartView"
+            [legend]="true"
+            [labels]="true">
+          </ngx-charts-pie-chart>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
