@@ -1,0 +1,51 @@
+/* ===============================
+   PREMIUM FOOTER
+================================ */
+
+.premium-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  color: #cbd5f5;
+  font-size: 13px;
+}
+
+/* Left + Right sections */
+.footer-left,
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Brand / link */
+.footer-link {
+  color: #818cf8;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #a5b4fc;
+}
+
+/* Muted text */
+.footer-muted {
+  color: #94a3b8;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 576px) {
+  .premium-footer {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+}
