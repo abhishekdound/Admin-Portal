@@ -43,3 +43,97 @@ li.nav-item{
     cursor:pointer;
   }
 }
+
+/* ==============================
+   NAVBAR RIGHT MENU (RESPONSIVE)
+============================== */
+
+.navbar-nav.ms-auto {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Icons */
+.navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  padding: 0.5rem 0.6rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Badge positioning */
+.navbar-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 10px;
+  padding: 2px 6px;
+}
+
+/* Dropdown menu (premium dark) */
+.dropdown-menu {
+  background: #451d5d;
+  color: #e5e7eb;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+}
+
+/* Dropdown items */
+.dropdown-item {
+  color: #e5e7eb;
+  font-size: 13px;
+}
+
+.dropdown-item:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Divider */
+.dropdown-divider {
+  border-color: rgba(255,255,255,0.08);
+}
+
+/* User image */
+.user-image {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+}
+
+/* ==============================
+   MOBILE OPTIMIZATION
+============================== */
+
+@media (max-width: 768px) {
+
+  /* Hide user name */
+  .user-menu span {
+    display: none;
+  }
+
+  /* Reduce spacing */
+  .navbar-nav .nav-link {
+    padding: 0.45rem;
+  }
+
+  /* Make dropdown full-width on mobile */
+  .dropdown-menu-lg {
+    width: 92vw;
+    max-width: 92vw;
+    left: auto !important;
+    right: 4vw !important;
+  }
+
+  /* Prevent overflow */
+  .dropdown-menu {
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+}

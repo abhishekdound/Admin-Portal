@@ -1,0 +1,33 @@
+.app-header {
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.nv-color {
+  background: linear-gradient(135deg, #4f46e5, #a07bdf);
+  color: #ffffff;
+}
+
+.app-header .nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.app-header .nav-link:hover {
+  color: #ffffff;
+}
+
+.app-header .bi-list {
+  font-size: 1.4rem;
+}
+
+@media (max-width: 991px) {
+  .app-header {
+    height: 52px;
+  }
+
+  .app-header .nav-link {
+    padding: 0.5rem;
+  }
+}
