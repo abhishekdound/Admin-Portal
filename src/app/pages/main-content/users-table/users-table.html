@@ -96,7 +96,12 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr
+  mat-row
+  *matRowDef="let row; columns: displayedColumns"
+  [class.active-row]="row.id === selectedUserId"
+></tr>
+
     </table>
 
     <mat-paginator

@@ -75,6 +75,17 @@
   transition: 0.15s ease;
 }
 
+.active-row {
+  background-color: #e7f1ff !important;
+  border-left: 4px solid #0d6efd;
+}
+
+tr.mat-row:hover {
+  background-color: #f1f5f9;
+  cursor: pointer;
+}
+
+
 
 
 

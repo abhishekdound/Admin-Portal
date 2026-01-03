@@ -139,133 +139,97 @@
           <!-- /.card -->
 
           <!-- DIRECT CHAT -->
-          <div class="card direct-chat direct-chat-primary mb-4 h-80">
-            <div class="card-header">
-              <h3 class="card-title">Chat with {{ selectedChatUser?.name || 'Select User' }}</h3>
-
-              <div class="card-tools">
-                <span title="3 New Messages" class="badge text-bg-primary"> 3 </span>
-                <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse">
-                  <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
-                  <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-tool"
-                  title="Contacts"
-                  data-lte-toggle="chat-pane"
-                >
-                  <i class="bi bi-chat-text-fill"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-lte-toggle="card-remove">
-                  <i class="bi bi-x-lg"></i>
-                </button>
-              </div>
+          <div class="card direct-chat direct-chat-primary chat-card">
+            <!-- HEADER -->
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <h5 class="mb-0 fw-semibold">
+                <i class="bi bi-chat-dots me-1"></i>
+                {{ selectedChatUser?.name || 'Select User' }}
+              </h5>
             </div>
-            <div class="card-body">
 
+            <!-- BODY -->
+            <div class="card-body chat-body">
               <div class="direct-chat-messages">
                 @for (msg of currentMessages; track $index) {
+                <div class="direct-chat-msg" [class.end]="msg.sender === 'me'">
+                  <img
+                    class="direct-chat-img"
+                    [src]="selectedChatUser?.image || 'assets/img/avatar.png'"
+                  />
 
-                  <div
-                    
-                    class="direct-chat-msg"
-                    [class.end]="msg.sender === 'me'"
-                  >
-                    <div class="direct-chat-infos clearfix">
-                      <span class="direct-chat-name float-start">
-                        {{ msg.sender === 'me' ? 'You' : selectedChatUser?.name }}
-                      </span>
-                      <span class="direct-chat-timestamp float-end">
-                        {{ msg.time }}
-                      </span>
-                    </div>
-  
-                    <img
-                      class="direct-chat-img"
-                      [src]="selectedChatUser?.image || 'assets/img/avatar.png'"
-                    />
-  
-                    <div class="direct-chat-text">
-                      {{ msg.message }}
-                    </div>
+                  <div class="direct-chat-text">
+                    <small class="chat-name">
+                      {{ msg.sender === 'me' ? 'You' : selectedChatUser?.name }}
+                    </small>
+                    <p class="mb-1">{{ msg.message }}</p>
+                    <span class="chat-time">{{ msg.time }}</span>
                   </div>
+                </div>
                 }
 
                 <!-- EMPTY STATE -->
-                 @if (!currentMessages.length) {
-
-                   <div  class="text-center text-muted">
-                     Select a user to start chatting
-                   </div>
-                 }
+                @if (!currentMessages.length) {
+                <div class="empty-chat">
+                  <i class="bi bi-chat-dots"></i>
+                  <p>Select a user to start chatting</p>
+                </div>
+                }
               </div>
             </div>
-            <div class="card-footer">
+
+            <!-- FOOTER -->
+            <div class="card-footer chat-footer">
               <div class="input-group">
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Type Message ..."
+                  placeholder="Type a message..."
                   [(ngModel)]="newMessage"
                   [disabled]="!selectedChatUser"
                 />
-                <span class="input-group-append">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    (click)="sendMessage()"
-                    [disabled]="!selectedChatUser"
-                  >
-                    Send
-                  </button>
-                </span>
+                <button
+                  class="btn btn-primary"
+                  (click)="sendMessage()"
+                  [disabled]="!selectedChatUser || !newMessage.trim()"
+                >
+                  <i class="bi bi-send-fill"></i>
+                </button>
               </div>
             </div>
-
-            <!-- /.card-footer-->
           </div>
+
           <!-- /.direct-chat -->
         </div>
         <!-- /.Start col -->
 
         <!-- Start col -->
-       <div class="col-lg-5 connectedSortable">
-        <!-- User Card -->
-  <div class="card border-0 shadow-sm mb-4 users-card h-80">
+        <div class="col-lg-5 connectedSortable">
+          <!-- User Card -->
+          <div class="card border-0 shadow-sm mb-4 users-card h-80">
+            <!-- Header -->
+            <div class="card-header users-header d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center gap-2">
+                <i class="fa-solid fa-users"></i>
+                <span class="fw-semibold">Users</span>
+              </div>
 
-    <!-- Header -->
-    <div class="card-header users-header d-flex align-items-center justify-content-between">
-  <div class="d-flex align-items-center gap-2">
-    <i class="fa-solid fa-users"></i>
-    <span class="fw-semibold">Users</span>
-  </div>
+              <!-- Compact Search -->
+              <input
+                type="text"
+                class="form-control form-control-sm users-search"
+                placeholder="Search"
+                (input)="usersTable?.checkSearchBar($event)"
+              />
+            </div>
 
-  <!-- Compact Search -->
-  <input
-    type="text"
-    class="form-control form-control-sm users-search"
-    placeholder="Search"
-    (input)="usersTable?.checkSearchBar($event)"
-  />
-</div>
-
-
-    <!-- Body -->
-    <div class="card-body p-0 bg-white users-container">
-      <app-users-table
-        #usersTable
-        [mode]="'card'"
-        
-  (chatUser)="openChat($event)">
-      </app-users-table>
-    </div>
-
-  </div>
-</div>
-
-
-
+            <!-- Body -->
+            <div class="card-body p-0 bg-white users-container">
+              <app-users-table #usersTable [mode]="'card'" (chatUser)="openChat($event)">
+              </app-users-table>
+            </div>
+          </div>
+        </div>
 
         <!-- /.Start col -->
       </div>

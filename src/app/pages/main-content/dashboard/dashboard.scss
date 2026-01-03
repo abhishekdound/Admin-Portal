@@ -33,10 +33,6 @@
   overflow: hidden;
 }
 
-.users-container {
-  // max-height: 380px;
-  // overflow-y: auto;
-}
 
 .connectedSortable {
   display: flex;
@@ -71,4 +67,144 @@
   flex: 1;
   overflow-y: auto;
 }
+
+.chat-card {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-body {
+  flex: 1;
+  overflow: hidden;
+  padding: 0;
+}
+
+.direct-chat-messages {
+  padding: 1rem;
+  height: 100%;
+  overflow-y: auto;
+  background: #f4f6f9;
+}
+
+/* Message bubble */
+.direct-chat-text {
+  max-width: 70%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.05);
+}
+
+.direct-chat-msg.end .direct-chat-text {
+  background: #0d6efd;
+  color: white;
+}
+
+.direct-chat-msg {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.direct-chat-msg.end {
+  flex-direction: row-reverse;
+}
+
+/* Meta */
+.chat-name {
+  font-weight: 600;
+  font-size: 12px;
+  opacity: .8;
+}
+
+.chat-time {
+  font-size: 11px;
+  opacity: .6;
+}
+
+/* Empty state */
+.empty-chat {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #adb5bd;
+}
+
+.empty-chat i {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+/* Footer */
+.chat-footer {
+  border-top: 1px solid #dee2e6;
+  padding: .75rem;
+}
+
+
+.chat-card,
+.users-card {
+  height: calc(100vh - 260px); /* adjust if header changes */
+  display: flex;
+  flex-direction: column;
+}
+
+/* chat body scroll */
+.chat-body {
+  flex: 1;
+  padding: 0;
+}
+
+.direct-chat-messages {
+  height: 100%;
+  overflow-y: auto;
+  background: #f4f6f9;
+}
+
+/* users list scroll */
+.users-container {
+  height: 100%;
+  overflow-y: auto;
+}
+
+
+
+.direct-chat-msg {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.direct-chat-msg.end {
+  flex-direction: row-reverse;
+}
+
+.direct-chat-text {
+  max-width: 70%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+
+.direct-chat-msg.end .direct-chat-text {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.chat-name {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.chat-time {
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+
 
