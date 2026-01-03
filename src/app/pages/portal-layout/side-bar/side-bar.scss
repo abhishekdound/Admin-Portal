@@ -1,23 +1,202 @@
+/* ===============================
+   SIDEBAR LAYOUT
+================================ */
+
 .app-sidebar {
+  width: 250px;
   height: 100vh;
+  background: linear-gradient(180deg, #0f172a, #020617);
+  color: #e5e7eb;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  transition: width 0.3s ease, left 0.3s ease;
 }
 
 .sidebar-wrapper {
   height: calc(100vh - 56px);
+  overflow-y: auto;
 }
-li{
-  i{
-    color: var(--primary-color);
+
+/* Collapsed */
+body.sidebar-collapse .app-sidebar {
+  width: 72px;
+}
+
+/* ===============================
+   BRAND
+================================ */
+
+.sidebar-brand {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #e5e7eb;
+  text-decoration: none;
+}
+
+.brand-image {
+  width: 32px;
+  height: 32px;
+}
+
+.brand-text {
+  transition: opacity 0.2s ease;
+}
+
+body.sidebar-collapse .brand-text {
+  opacity: 0;
+}
+
+/* ===============================
+   MENU
+================================ */
+
+.sidebar-menu {
+  padding: 8px 0;
+}
+
+.nav-header {
+  color: #94a3b8;
+  font-size: 11px;
+  padding: 12px 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+/* Menu link */
+.nav-item > .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  margin: 4px 8px;
+  border-radius: 10px;
+  color: #cbd5f5;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Icons */
+.nav-item .nav-link i {
+  font-size: 16px;
+  min-width: 20px;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+/* Hover */
+.nav-item > .nav-link:hover {
+  background: rgba(79, 70, 229, 0.15);
+  color: #ffffff;
+}
+
+/* ACTIVE (single source of truth) */
+.nav-item > .nav-link.active {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #ffffff;
+}
+
+.nav-item > .nav-link.active i {
+  color: #ffffff;
+}
+
+/* Hide text when collapsed */
+body.sidebar-collapse .nav-link p {
+  display: none;
+}
+
+/* ===============================
+   SUB MENU
+================================ */
+
+.nav-treeview {
+  padding-left: 12px;
+}
+
+.nav-treeview .nav-link {
+  padding: 8px 16px;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* Open parent (NO background override) */
+.nav-item.menu-open > .nav-link {
+  background: rgba(79, 70, 229, 0.18);
+}
+
+/* Arrow */
+.nav-arrow {
+  margin-left: auto;
+  transition: transform 0.25s ease;
+}
+
+.menu-open > .nav-link .nav-arrow {
+  transform: rotate(90deg);
+}
+
+/* ===============================
+   SCROLLBAR
+================================ */
+
+.app-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.app-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+}
+
+/* ===============================
+   TOOLTIP (COLLAPSED)
+================================ */
+
+body.sidebar-collapse .nav-item {
+  position: relative;
+}
+
+body.sidebar-collapse .nav-item:hover::after {
+  content: attr(data-title);
+  position: absolute;
+  left: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #020617;
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ===============================
+   MOBILE SIDEBAR
+================================ */
+
+@media (max-width: 992px) {
+  .app-sidebar {
+    position: fixed;
+    left: -260px;
+    top: 0;
+    z-index: 1050;
   }
-}
-.nav-item{
-  .nav-link.active{
-    background-color: var(--secondary-color) !important;
-    i{
-      color: var(--danger-color) !important;
-    }
+
+  body.sidebar-open .app-sidebar {
+    left: 0;
   }
-}
-.nav-item.menu-open{
-  background-color: rgb(50, 90, 90) !important;
+
+  body.sidebar-open::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+  }
 }
