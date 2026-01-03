@@ -1,21 +1,31 @@
 <main class="app-main m-0">
   <app-dashboard-header [this]="'Dashboard'"></app-dashboard-header>
+
   <div class="app-content">
     <div class="container-fluid">
-      <div class="row align-items-stretch">
-        <div class="col-lg-7 connectedSortable">
 
-          <div class="card direct-chat direct-chat-primary chat-card">
+      <!-- ================= CHAT + USERS ================= -->
+      <div class="row g-3 align-items-stretch">
+
+        <!-- CHAT -->
+        <div class="col-xl-7 col-lg-7 col-md-12">
+          <div class="card direct-chat direct-chat-primary chat-card h-100">
+
+            <!-- HEADER -->
             <div class="card-header d-flex align-items-center justify-content-between">
               <div class="d-flex align-items-center gap-2">
                 @if (selectedChatUser?.image) {
-
-                <img [src]="selectedChatUser?.image" class="chat-user-avatar" alt="User" />
+                  <img
+                    [src]="selectedChatUser?.image"
+                    class="chat-user-avatar"
+                    alt="User"
+                  />
                 } @else {
-
-                <ng-template #defaultAvatar>
-                  <img src="assets/img/avatar.png" class="chat-user-avatar" alt="User" />
-                </ng-template>
+                  <img
+                    src="assets/img/avatar.png"
+                    class="chat-user-avatar"
+                    alt="User"
+                  />
                 }
 
                 <h5 class="mb-0 fw-semibold">
@@ -24,34 +34,41 @@
               </div>
             </div>
 
+            <!-- BODY -->
             <div class="card-body chat-body">
               <div class="direct-chat-messages">
-                @for (msg of currentMessages; track $index) {
-                <div class="direct-chat-msg" [class.end]="msg.sender === 'me'">
-                  <img
-                    class="direct-chat-img"
-                    [src]="selectedChatUser?.image || './img/user2-160x160.jpg'"
-                  />
 
-                  <div class="direct-chat-text">
-                    <small class="chat-name">
-                      {{ msg.sender === 'me' ? 'You' : selectedChatUser?.name }}
-                    </small>
-                    <p class="mb-1">{{ msg.message }}</p>
-                    <span class="chat-time">{{ msg.time }}</span>
+                @for (msg of currentMessages; track $index) {
+                  <div
+                    class="direct-chat-msg"
+                    [class.end]="msg.sender === 'me'"
+                  >
+                    <img
+                      class="direct-chat-img"
+                      [src]="selectedChatUser?.image || 'assets/img/avatar.png'"
+                    />
+
+                    <div class="direct-chat-text">
+                      <small class="chat-name">
+                        {{ msg.sender === 'me' ? 'You' : selectedChatUser?.name }}
+                      </small>
+                      <p class="mb-1">{{ msg.message }}</p>
+                      <span class="chat-time">{{ msg.time }}</span>
+                    </div>
                   </div>
-                </div>
                 }
 
+                <!-- EMPTY -->
                 @if (!currentMessages.length) {
-                <div class="empty-chat">
-                  <i class="bi bi-chat-dots"></i>
-                  <p>Select a user to start chatting</p>
-                </div>
+                  <div class="empty-chat">
+                    <i class="bi bi-chat-dots"></i>
+                    <p>Select a user to start chatting</p>
+                  </div>
                 }
               </div>
             </div>
 
+            <!-- FOOTER -->
             <div class="card-footer chat-footer">
               <div class="input-group">
                 <input
@@ -72,11 +89,15 @@
                 </button>
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
-        <div class="col-lg-5 connectedSortable">
-          <div class="card border-0 shadow-sm mb-4 users-card h-80">
+
+        <!-- USERS -->
+        <div class="col-xl-5 col-lg-5 col-md-12">
+          <div class="card users-card h-100">
+
+            <!-- HEADER -->
             <div class="card-header users-header d-flex align-items-center justify-content-between">
               <div class="d-flex align-items-center gap-2">
                 <i class="fa-solid fa-users"></i>
@@ -91,23 +112,27 @@
               />
             </div>
 
-            <div class="card-body p-0 bg-white users-container">
-              <app-users-table #usersTable [mode]="'card'" (chatUser)="openChat($event)">
+            <!-- BODY -->
+            <div class="card-body users-container p-0">
+              <app-users-table
+                #usersTable
+                [mode]="'card'"
+                (chatUser)="openChat($event)">
               </app-users-table>
             </div>
+
           </div>
         </div>
 
       </div>
 
-       <div>
-
-        <div>
+      <!-- ================= ANALYTICS ================= -->
+      <div class="row mt-4">
+        <div class="col-12">
           <app-user-analytics></app-user-analytics>
         </div>
+      </div>
 
-
-       </div>
     </div>
   </div>
 </main>
