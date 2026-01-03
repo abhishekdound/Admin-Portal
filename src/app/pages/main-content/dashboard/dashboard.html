@@ -1,40 +1,29 @@
 <main class="app-main m-0">
   <app-dashboard-header [this]="'Dashboard'"></app-dashboard-header>
-  <!--begin::App Content-->
   <div class="app-content">
-    <!--begin::Container-->
     <div class="container-fluid">
-      <!--begin::Row-->
       <div class="row align-items-stretch">
-        <!-- Start col -->
         <div class="col-lg-7 connectedSortable">
-          <!-- /.card -->
 
-          <!-- DIRECT CHAT -->
           <div class="card direct-chat direct-chat-primary chat-card">
-            <!-- HEADER -->
             <div class="card-header d-flex align-items-center justify-content-between">
               <div class="d-flex align-items-center gap-2">
-                <!-- User Avatar -->
                 @if (selectedChatUser?.image) {
 
                 <img [src]="selectedChatUser?.image" class="chat-user-avatar" alt="User" />
                 } @else {
 
-                <!-- Fallback Avatar -->
                 <ng-template #defaultAvatar>
                   <img src="assets/img/avatar.png" class="chat-user-avatar" alt="User" />
                 </ng-template>
                 }
 
-                <!-- User Name -->
                 <h5 class="mb-0 fw-semibold">
                   {{ selectedChatUser?.name || 'Select User' }}
                 </h5>
               </div>
             </div>
 
-            <!-- BODY -->
             <div class="card-body chat-body">
               <div class="direct-chat-messages">
                 @for (msg of currentMessages; track $index) {
@@ -54,7 +43,6 @@
                 </div>
                 }
 
-                <!-- EMPTY STATE -->
                 @if (!currentMessages.length) {
                 <div class="empty-chat">
                   <i class="bi bi-chat-dots"></i>
@@ -64,7 +52,6 @@
               </div>
             </div>
 
-            <!-- FOOTER -->
             <div class="card-footer chat-footer">
               <div class="input-group">
                 <input
@@ -87,22 +74,15 @@
             </div>
           </div>
 
-          <!-- /.direct-chat -->
         </div>
-        <!-- /.Start col -->
-
-        <!-- Start col -->
         <div class="col-lg-5 connectedSortable">
-          <!-- User Card -->
           <div class="card border-0 shadow-sm mb-4 users-card h-80">
-            <!-- Header -->
             <div class="card-header users-header d-flex align-items-center justify-content-between">
               <div class="d-flex align-items-center gap-2">
                 <i class="fa-solid fa-users"></i>
                 <span class="fw-semibold">Users</span>
               </div>
 
-              <!-- Compact Search -->
               <input
                 type="text"
                 class="form-control form-control-sm users-search"
@@ -111,7 +91,6 @@
               />
             </div>
 
-            <!-- Body -->
             <div class="card-body p-0 bg-white users-container">
               <app-users-table #usersTable [mode]="'card'" (chatUser)="openChat($event)">
               </app-users-table>
@@ -119,11 +98,8 @@
           </div>
         </div>
 
-        <!-- /.Start col -->
       </div>
-      <!-- /.row (main row) -->
 
-      <!-- User-Analytics -->
        <div>
 
         <div>
@@ -133,7 +109,5 @@
 
        </div>
     </div>
-    <!--end::Container-->
   </div>
-  <!--end::App Content-->
 </main>

@@ -1,9 +1,7 @@
 <div class="mt-0">
-  <!-- Search Bar And Add User-->
 
   @if(mode()==='page'){
   <div class="actions premium-actions">
-  <!-- Search -->
   <div class="searchBar position-relative">
     <i class="fa-solid fa-magnifying-glass search-icon"></i>
     <input
@@ -14,7 +12,6 @@
     />
   </div>
 
-  <!-- Excel -->
   <button
     type="button"
     class="icon-btn excel-btn"
@@ -23,7 +20,6 @@
     <i class="fa-solid fa-file-excel"></i>
   </button>
 
-  <!-- Add User -->
   <button
     class="btn btn-primary add-user-btn"
     (click)="openUserModal()">
@@ -36,7 +32,6 @@
 
   <div class="ngx-datatable-table">
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z2">
-      <!-- Avatar -->
       <ng-container matColumnDef="avatar">
         <th mat-header-cell *matHeaderCellDef>Avatar</th>
         <td mat-cell *matCellDef="let row">
@@ -50,31 +45,26 @@
         </td>
       </ng-container>
 
-      <!-- Name -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
         <td mat-cell *matCellDef="let row">{{ row.name }}</td>
       </ng-container>
 
-      <!-- Age -->
       <ng-container matColumnDef="age">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Age</th>
         <td mat-cell *matCellDef="let row">{{ row.age }}</td>
       </ng-container>
 
-      <!-- Gender + DOB -->
       <ng-container matColumnDef="genderDob">
         <th mat-header-cell *matHeaderCellDef>Gender / DOB</th>
         <td mat-cell *matCellDef="let row">{{ row.gender }}, {{ row.dob | date : 'MMM d, y' }}</td>
       </ng-container>
 
-      <!-- Email -->
       <ng-container matColumnDef="mail">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
         <td mat-cell *matCellDef="let row">{{ row.mail }}</td>
       </ng-container>
 
-      <!-- Action -->
       <ng-container
      matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef>Action</th>

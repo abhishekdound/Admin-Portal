@@ -4,29 +4,23 @@
   width: 100%;
 }
 
-/* Each chart takes equal width */
 .analytics-card {
   flex: 1;
-  min-width: 0; /* 🔥 VERY IMPORTANT (prevents cut) */
+  min-width: 0;
 }
 
-/* Chart height */
 ngx-charts-bar-vertical,
 ngx-charts-pie-chart {
   display: block;
   height: 300px;
 }
 
-/* Stack vertically on small screens */
 @media (max-width: 992px) {
   .analytics-row {
     flex-direction: column;
   }
 }
 
-/* ===============================
-   GLOBAL PREMIUM CARD (CHAT STYLE)
-================================ */
 
 .card {
   border-radius: 16px;
@@ -39,7 +33,6 @@ ngx-charts-pie-chart {
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-/* ---------- HEADER ---------- */
 .card-header {
   background: linear-gradient(135deg, #4f46e5, #7c3aed);
   color: #ffffff;
@@ -49,13 +42,11 @@ ngx-charts-pie-chart {
   letter-spacing: 0.3px;
 }
 
-/* ---------- BODY ---------- */
 .card-body {
   background: linear-gradient(180deg, #bdc2d7, #030718);
   padding: 18px;
 }
 
-/* ---------- FOOTER ---------- */
 .card-footer {
   background: #3f509d;
   border-top: 1px solid rgba(255, 255, 255, 0.08);

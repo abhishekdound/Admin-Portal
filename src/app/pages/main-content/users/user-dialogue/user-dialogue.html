@@ -1,7 +1,6 @@
 <h2 mat-dialog-title>{{ user.id ? 'Edit User' : 'Add User' }}</h2>
 
 <mat-dialog-content class="d-flex flex-column gap-2">
-    <!-- IMAGE PREVIEW -->
   <div class="avatar-wrapper">
     <img
       [src]="user.image || 'img/avatar1.png'"
@@ -9,7 +8,6 @@
     />
   </div>
 
-  <!-- IMAGE UPLOAD -->
   <input
     type="file"
     accept="image/*"

@@ -6,14 +6,12 @@
   background: var(--background-color);
 }
 
-/* Title */
 .page-title {
   font-weight: 600;
   color: #111827;
   letter-spacing: 0.3px;
 }
 
-/* Breadcrumb */
 .breadcrumb {
   background: transparent;
   padding: 0;
@@ -24,7 +22,6 @@
   color: #9ca3af;
 }
 
-/* Home icon */
 .home-link {
   color: var(--bs-primary);
   font-size: 16px;
@@ -35,7 +32,6 @@
   color: #0a58ca;
 }
 
-/* Mobile fix */
 @media (max-width: 576px) {
   .breadcrumb {
     justify-content: flex-start !important;

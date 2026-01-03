@@ -1,7 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
 :root {
   --sidebar-open-width: 250px;
-  --sidebar-collapsed-width: 65px; /* or 80px for sidebar-mini */
+  --sidebar-collapsed-width: 65px;
 }
 
 
@@ -13,20 +12,17 @@
   transition: all 0.3s ease;
 }
 
-/* sidebar open */
 body:not(.sidebar-collapse) .app-header {
   left: var(--sidebar-open-width);
   width: calc(100% - var(--sidebar-open-width));
 }
 
-/* sidebar collapsed */
 body.sidebar-collapse .app-header {
   left: var(--sidebar-collapsed-width);
   width: calc(100% - var(--sidebar-collapsed-width));
 }
 
 
-// body.fixed-foote
 
 body.fixed-footer {
   
@@ -48,13 +44,11 @@ body.fixed-footer {
   transition: all 0.3s ease;
 }
 
-/* sidebar open */
 body:not(.sidebar-collapse) .app-footer {
   left: var(--sidebar-open-width);
   width: calc(100% - var(--sidebar-open-width));
 }
 
-/* sidebar collapsed */
 body.sidebar-collapse .app-footer {
   left: var(--sidebar-collapsed-width);
   width: calc(100% - var(--sidebar-collapsed-width));
@@ -89,11 +83,11 @@ body.sidebar-collapse .app-main {
 }
 
 body:not(.sidebar-collapse) .user-main {
-  margin-left: 45px; /* sidebar open */
+  margin-left: 45px;
 }
 
 body.sidebar-collapse .user-main {
-  margin-left: 40px; /* sidebar collapsed */
+  margin-left: 40px;
   width:87vw;
 }
 
@@ -103,37 +97,25 @@ body.sidebar-collapse .user-main {
 
 
 
-/* NORMAL */
 .app-sidebar {
   width: 250px;
   transition: width 0.3s ease;
 }
 
-/* COLLAPSED */
 body.sidebar-collapse .app-sidebar {
-  width: 50px;   /* or 80px (AdminLTE default mini) */
+  width: 50px;
 }
-// .user-main{
-//   .app-content-header{
-//     .main-row{
-//       width: 80vw;
-//     }
-//   }
-// }
 
 
-/* styles.scss (global) */
 
-/* ================= TABLE ================= */
 .mat-mdc-table {
   width: 100%;
   overflow-x: auto;
 }
 
-/* ================= HEADER ================= */
 .mat-mdc-header-row {
   position: sticky;
-  top: 0;           /* change to 56px if navbar exists */
+  top: 0;
   z-index: 100;
   background: #6496c8;
 }
@@ -146,17 +128,14 @@ body.sidebar-collapse .app-sidebar {
   padding: 12px 10px;
   border-bottom: 1px solid #e5e7eb;
 
-  /* center header text */
   text-align: center;
   justify-content: center;
 }
 
-/* ================= BODY ================= */
 .mat-mdc-cell {
   font-size: 16px;
   padding: 12px 10px;
 
-  /* center cell content */
   text-align: center;
   justify-content: center;
 
@@ -165,15 +144,13 @@ body.sidebar-collapse .app-sidebar {
   overflow-wrap: break-word;
 }
 
-/* ================= ROW HOVER ================= */
 .mat-mdc-row:hover {
   background-color: var(--dark-color);
   transition: background-color 0.2s ease-in-out;
 }
 
-/* ===== MAT-TABLE HEADER PURPLE ===== */
 .mat-mdc-header-row {
-  background-color: #6a0dad !important; /* purple */
+  background-color: #6a0dad !important;
 }
 
 .mat-mdc-header-cell {
