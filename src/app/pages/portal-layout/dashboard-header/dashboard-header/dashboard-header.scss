@@ -6,6 +6,88 @@
   background: var(--background-color);
 }
 
+
+/* ===============================
+   PAGE HEADER (PREMIUM)
+================================ */
+
+.app-content-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Row spacing */
+.header-row {
+  row-gap: 8px;
+}
+
+/* Title */
+.page-title {
+  color: #e5e7eb;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+/* Breadcrumb */
+.header-breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+/* Breadcrumb items */
+.header-breadcrumb .breadcrumb-item {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.header-breadcrumb .breadcrumb-item.active {
+  color: #4277e3;
+  font-weight: 500;
+}
+
+/* Home icon */
+.home-link {
+  color: #c7d2fe;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(79, 70, 229, 0.18);
+  transition: all 0.2s ease;
+}
+
+.home-link:hover {
+  background: rgba(79, 70, 229, 0.35);
+  color: #ffffff;
+}
+
+/* ===============================
+   RESPONSIVE BEHAVIOR
+================================ */
+
+@media (max-width: 768px) {
+
+  /* Center breadcrumb on mobile */
+  .header-breadcrumb {
+    justify-content: flex-start;
+    padding-left: 1rem;
+    margin-top: 6px;
+  }
+
+  /* Title spacing */
+  .header-title {
+    padding-left: 1rem !important;
+  }
+
+  .page-title {
+    font-size: 18px;
+  }
+}
+
+
 .page-title {
   font-weight: 600;
   color: #111827;
