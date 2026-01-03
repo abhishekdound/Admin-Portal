@@ -3,6 +3,26 @@
   align-items: center;
   gap: 12px;
   padding: 12px 0;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .premium-actions {
+    gap: 8px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .searchBar {
+    flex: 1 1 100%;
+  }
+
+  .add-user-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .searchBar {
@@ -19,26 +39,33 @@
 }
 
 .search-input {
-  padding: 6px 10px 6px 28px;
+  padding: 6px 12px 6px 32px;
   width: 220px;
   border-radius: 20px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: #020617;
+  color: #e5e7eb;
   font-size: 0.85rem;
-  transition: all 0.2s ease;
+}
+
+.search-input::placeholder {
+  color: #94a3b8;
 }
 
 .search-input:focus {
   outline: none;
   border-color: #6366f1;
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
 }
+
+
 
 .icon-btn {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid #e5e7eb;
-  background: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: #020617;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,11 +78,11 @@
 }
 
 .excel-btn i {
-  color: #16a34a;
+  color: #22c55e;
 }
 
 .icon-btn:hover {
-  background: #f9fafb;
+  background: rgba(99,102,241,0.2);
   transform: translateY(-1px);
 }
 
@@ -80,6 +107,125 @@ tr.mat-row:hover {
   background-color: #f1f5f9;
   cursor: pointer;
 }
+
+.ngx-datatable-table {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+}
+
+/* Prevent column squeezing */
+table.mat-table {
+  min-width: 900px;
+}
+table.mat-table {
+  background: #020617;
+  color: #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+th.mat-header-cell {
+  background: #0f172a;
+  color: #c7d2fe;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+td.mat-cell {
+  font-size: 13px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.active-row {
+  background: rgba(99,102,241,0.15) !important;
+  border-left: 4px solid #6366f1;
+}
+.action1 i {
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.action1 i:hover {
+  cursor: pointer;
+  transform: scale(1.15);
+  color: #6366f1;
+}
+/* ===============================
+   TABLE HEADER (PREMIUM)
+================================ */
+
+th.mat-header-cell {
+  background: linear-gradient(135deg, #0f172a, #020617) ;
+  color: #e5e7eb;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 14px 12px;
+}
+
+/* Sort icon */
+.mat-sort-header-arrow {
+  color: #c7d2fe;
+}
+
+/* Active sort */
+.mat-sort-header-sorted {
+  color: #ffffff;
+}
+/* ===============================
+   PAGINATOR (PREMIUM)
+================================ */
+
+.mat-paginator {
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: #e5e7eb;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 6px 12px;
+}
+
+/* Text */
+.mat-paginator,
+.mat-paginator-range-label {
+  font-size: 12px;
+}
+
+/* Buttons */
+.mat-paginator-icon {
+  color: #c7d2fe;
+}
+
+.mat-paginator-navigation button:hover {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+/* Page size selector */
+.mat-paginator-page-size select {
+  background: #020617;
+  color: #e5e7eb;
+  border-radius: 6px;
+}
+
+/* Disabled */
+.mat-paginator-navigation button[disabled] {
+  opacity: 0.4;
+}
+/* Rounded table */
+table.mat-table {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* Footer rounding */
+.mat-paginator {
+  border-radius: 0 0 14px 14px;
+}
+.sticky-table th.mat-header-cell {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
 
 
 

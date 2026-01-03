@@ -108,61 +108,194 @@ body.sidebar-collapse .app-sidebar {
 
 
 
-.mat-mdc-table {
-  width: 100%;
-  overflow-x: auto;
+/* ======================================
+   ANGULAR MATERIAL TABLE – PREMIUM (MDC)
+====================================== */
+
+/* TABLE WRAPPER */
+.mdc-data-table__table {
+  background: #020617 !important;
+  color: #e5e7eb !important;
+  border-radius: 14px !important;
+  overflow: hidden;
+  min-width: 900px;
 }
 
-.mat-mdc-header-row {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: #6496c8;
+/* HEADER ROW */
+.mdc-data-table__header-row {
+  background: linear-gradient(135deg, #475d8f, #020617) !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
 }
 
-.mat-mdc-header-cell {
-  font-size: 17px;
-  font-weight: 600;
-  color: #090003;
-  text-transform: uppercase;
-  padding: 12px 10px;
-  border-bottom: 1px solid #e5e7eb;
-
-  text-align: center;
-  justify-content: center;
+/* HEADER CELL */
+.mdc-data-table__header-cell {
+  color: #e5e7eb !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  padding: 14px 12px !important;
+  border-bottom: 1px solid rgba(255,255,255,0.1) !important;
 }
 
-.mat-mdc-cell {
-  font-size: 16px;
-  padding: 12px 10px;
-
-  text-align: center;
-  justify-content: center;
-
-  white-space: normal;
-  word-break: break-word;
-  overflow-wrap: break-word;
+/* SORT ICON */
+.mat-sort-header-arrow {
+  color: #c7d2fe !important;
 }
 
-.mat-mdc-row:hover {
-  background-color: var(--dark-color);
-  transition: background-color 0.2s ease-in-out;
+/* BODY CELLS */
+.mdc-data-table__cell {
+  font-size: 13px !important;
+  padding: 12px !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
 }
 
-.mat-mdc-header-row {
-  background-color: #6a0dad !important;
+/* ROW HOVER */
+.mdc-data-table__row:hover .mdc-data-table__cell {
+  background: rgba(99,102,241,0.08) !important;
 }
 
-.mat-mdc-header-cell {
-  background-color: #6a0dad !important;
-  color: #ffffff !important;
-  font-weight: 600;
+/* ACTIVE ROW */
+tr.active-row .mdc-data-table__cell {
+  background: rgba(99,102,241,0.18) !important; 
+  border-left: 4px solid #6366f1 !important;
 }
-.mat-mdc-header-cell:hover {
-  background-color: #a08ab6 !important;
+
+/* ======================================
+   PAGINATOR – PREMIUM
+====================================== */
+
+.mat-mdc-paginator {
+  background: linear-gradient(135deg, #020617, #0f172a) !important;
+  color: #e5e7eb ;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0 0 14px 14px !important;
+}
+
+/* RANGE TEXT */
+.mat-mdc-paginator-range-label {
+  font-size: 12px !important;
+  color: #cbd5f5 !important;
+}
+
+/* ICON BUTTONS */
+.mat-mdc-icon-button {
+  color: #c7d2fe !important;
+  transition: background 0.2s ease !important;
+}
+
+.mat-mdc-icon-button:hover {
+  background: rgba(99,102,241,0.2) !important;
+}
+
+/* PAGE SIZE SELECT */
+.mat-mdc-paginator-page-size select {
+  background: #020617 !important;
+  color: #e5e7eb !important;
+  border-radius: 6px !important;
+}
+
+/* DISABLED */
+.mat-mdc-icon-button[disabled] {
+  opacity: 0.4 !important;
 }
 
 
+/* ===============================
+   TABLE TEXT (PREMIUM)
+================================ */
+
+.mdc-data-table__header-cell {
+  color: #e5e7eb;              /* Primary */
+}
+
+.mdc-data-table__cell {
+  color: #cbd5f5;              /* Secondary */
+}
+
+/* Muted text inside cells (email, helper text) */
+.mdc-data-table__cell small,
+.mdc-data-table__cell .text-muted {
+  color: #94a3b8;
+}
+
+/* Hover emphasis */
+.mdc-data-table__row:hover .mdc-data-table__cell {
+  color: #e5e7eb;
+}
+
+/* Active row */
+tr.active-row .mdc-data-table__cell {
+  color: #ffffff;
+}
+/* ===============================
+   PAGINATOR TEXT
+================================ */
+
+.mat-mdc-paginator {
+  color: #cbd5f5;
+}
+
+.mat-mdc-paginator-range-label {
+  color: #94a3b8;
+}
+
+.mat-mdc-icon-button {
+  color: #cbd5f5;
+}
+
+.mat-mdc-icon-button:hover {
+  color: #ffffff;
+}
+/* Action icons */
+.action1 i {
+  color: #94a3b8;
+}
+
+.action1 i:hover {
+  color: #6366f1;   /* Accent */
+}
+
+/* Delete */
+.action1 i.text-danger {
+  color: #ef4444;
+}
+
+/* Chat */
+.action1 i.text-primary {
+  color: #818cf8;
+}
+/* ===============================
+   PAGINATOR – TEXT FIX (MDC)
+================================ */
+
+/* "Items per page" label */
+.mat-mdc-paginator-page-size-label {
+  color: #cbd5f5 !important;   /* Premium readable */
+  font-size: 12px;
+}
+
+/* Page size value (10, 20, etc) */
+.mat-mdc-paginator-page-size-value {
+  color: #e5e7eb !important;
+}
+
+/* Select trigger */
+.mat-mdc-paginator-page-size-select {
+  color: #e5e7eb;
+}
+
+/* Dropdown arrow */
+.mat-mdc-select-arrow {
+  color: #cbd5f5;
+}
+
+/* Range label (1–10 of 50) */
+.mat-mdc-paginator-range-label {
+  color: #94a3b8;
+}
 
 
 
