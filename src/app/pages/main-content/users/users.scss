@@ -1,0 +1,52 @@
+/* ===============================
+   USER PAGE LAYOUT
+================================ */
+
+.user-main {
+  min-height: calc(100vh - 56px);
+  padding: 0;
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+/* Header spacing */
+.user-main-dashboard-header {
+  margin-bottom: 12px;
+}
+
+/* Content area */
+.user-content {
+  background: linear-gradient(180deg, #404493, #255ee1);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ===============================
+   SIDEBAR AWARENESS
+================================ */
+
+body:not(.sidebar-collapse) .user-main {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+}
+
+body.sidebar-collapse .user-main {
+  margin-left: 72px;
+  width: calc(100% - 72px);
+}
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================ */
+
+@media (max-width: 992px) {
+  .user-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .user-content {
+    padding: 12px;
+    border-radius: 10px;
+  }
+}

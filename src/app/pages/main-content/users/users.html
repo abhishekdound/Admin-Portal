@@ -1,9 +1,11 @@
-<div class=" user-main ">
-  <div class="user-main-dashboard-heaer ">
+<div class="user-main">
+  <!-- Page Header -->
+  <div class="user-main-dashboard-header">
     <app-dashboard-header [this]="'User'"></app-dashboard-header>
   </div>
-  <div>
-    <app-users-table [mode]="'page'"></app-users-table>
 
+  <!-- Content -->
+  <div class="user-content">
+    <app-users-table [mode]="'page'"></app-users-table>
   </div>
 </div>
